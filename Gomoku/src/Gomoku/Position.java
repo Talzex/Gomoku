@@ -19,5 +19,3 @@ public class Position {
        this.color = Color.NONE;
    }
 }
-
-dddddd
