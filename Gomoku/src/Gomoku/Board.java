@@ -10,5 +10,7 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Board {
-    
+    Color get(Position p){
+        return p.color;
+    }
 }
