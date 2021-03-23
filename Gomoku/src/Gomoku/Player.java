@@ -10,5 +10,5 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public interface Player {
-    
+    Position choice(Board b) ;
 }
