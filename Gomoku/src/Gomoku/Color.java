@@ -9,11 +9,4 @@ package Gomoku;
  *
  * @author tduthil/jforme
  */
-public class Position {
-   final int row, col;
-   
-   Position(int row, int col){
-       this.row = row;
-       this.col = col;
-   }
-}
+enum Color{BLACK, WHITE, NONE};
