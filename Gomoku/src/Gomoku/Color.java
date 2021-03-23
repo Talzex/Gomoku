@@ -9,4 +9,4 @@ package Gomoku;
  *
  * @author tduthil/jforme
  */
-enum Color{BLACK, WHITE, NONE};
+public enum Color{BLACK, WHITE, NONE};
