@@ -11,9 +11,11 @@ package Gomoku;
  */
 public class Position {
    final int row, col;
+   Color color;
    
    Position(int row, int col){
        this.row = row;
        this.col = col;
+       this.color = Color.NONE;
    }
 }
