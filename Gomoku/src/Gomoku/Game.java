@@ -5,10 +5,18 @@
  */
 package Gomoku;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author tduthil/jforme
  */
 public class Game {
+    Color nextPlayer;
+    Board board;
+    ArrayList coupsJoues;
     
+    boolean play(Position p){
+        return false;
+    }
 }
