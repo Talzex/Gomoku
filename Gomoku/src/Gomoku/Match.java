@@ -10,14 +10,18 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Match {
-    int largeur;
-    int hauteur;
+    static int nb_lignes;
+    static int nb_colonnes;
     Player joueur1;
     Player joueur2;
     
-    Match(int largeur, int hauteur, Player joueur1, Player joueur2){
-        this.largeur = largeur;
-        this.hauteur = hauteur;
+    Match(int hauteur,int largeur, Player joueur1, Player joueur2) throws InvalidSizeException{   
+        if(hauteur >= 5 && hauteur <= 26 && largeur >= 5 && largeur <= 26){
+            Match.nb_lignes = hauteur;
+            Match.nb_colonnes = largeur;
+        } else {
+            throw new InvalidSizeException(hauteur, largeur);
+        }
         this.joueur1 = joueur1;
         this.joueur2 = joueur2;
     }

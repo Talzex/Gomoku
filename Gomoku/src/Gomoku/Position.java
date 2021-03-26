@@ -13,9 +13,18 @@ public class Position {
    final int row, col;
    Color color;
    
-   Position(int row, int col){
-       this.row = row;
+   Position(int col, int row){
        this.col = col;
+       this.row = row;
        this.color = Color.NONE;
    }
+   
+   public boolean estOccupee(){
+       if(this.color == Color.NONE){
+           return false;
+       } else {
+           return true;
+       }
+   }
+   
 }
