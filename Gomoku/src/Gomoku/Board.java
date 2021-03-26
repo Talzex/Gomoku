@@ -10,7 +10,14 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Board {
+    
+    
     Color get(Position p){
         return p.color;
     }
+    
+    void set(Position p, Color c){
+        p.color = c;
+    }
+    
 }
