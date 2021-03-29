@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Game {
     Color nextPlayer;
     Board board;
-    ArrayList coupsJoues;
+    ArrayList coupsjoues = new ArrayList();
     
     boolean play(Position p){
         return false;

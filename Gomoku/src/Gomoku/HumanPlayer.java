@@ -7,7 +7,7 @@ package Gomoku;
 
 /**
  *
- * @author jforme
+ * @author jforme/tduthil
  */
 public class HumanPlayer implements Player {
     String pseudo;

@@ -10,12 +10,30 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Position {
-   final int row, col;
-   Color color;
-   
-   Position(int row, int col){
-       this.row = row;
-       this.col = col;
-       this.color = Color.NONE;
-   }
+
+    final int row, col;
+    //final String coord;
+    Color color;
+
+    public Position(int col, int row) {
+        this.row = row;
+        this.col = col;
+        this.color = Color.NONE;
+        
+    }
+
+    /*public Position(String coord ) {
+        this.col = coord.getCol();
+        this.row = coord.getLig();
+    }*/
+
+    public  int getCol(){
+        return this.col;
+    }
+    
+    public int getLig(){
+        return this.row;
+    }
 }
+
+  
