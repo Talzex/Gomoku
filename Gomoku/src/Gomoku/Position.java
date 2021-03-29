@@ -10,7 +10,6 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Position {
-
     final int row, col;
     //final String coord;
     Color color;
@@ -35,5 +34,3 @@ public class Position {
         return this.row;
     }
 }
-
-  

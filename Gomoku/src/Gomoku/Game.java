@@ -16,7 +16,7 @@ public class Game {
     Board board;
     ArrayList coupsjoues = new ArrayList();
     
-    boolean play(Position p){
+    private boolean play(Position p){
         return false;
     }
 }

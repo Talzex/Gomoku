@@ -10,10 +10,10 @@ package Gomoku;
  * @author jforme/tduthil
  */
 public class HumanPlayer implements Player {
-    String pseudo;
+    String username;
     
-    public HumanPlayer(String pseudo) {
-        this.pseudo = pseudo;
+    public HumanPlayer(String username) {
+        this.username = username;
     }    
 
     @Override
