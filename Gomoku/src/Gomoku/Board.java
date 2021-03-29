@@ -11,7 +11,6 @@ package Gomoku;
  */
 public class Board {
     
-<<<<<<< HEAD
     
     Color get(Position p){
         return p.color;
@@ -21,11 +20,6 @@ public class Board {
         p.color = c;
     }
     
-=======
-    Color get(Position p) {
-        return p.color;
-    }
-
     static void dessinerLigne() {
         System.out.print("   +");
         for (int i = 0; i <= Match.nb_colonnes * 2; i++) {
@@ -51,5 +45,4 @@ public class Board {
         }
         dessinerLigne();
     }
->>>>>>> julian
 }
