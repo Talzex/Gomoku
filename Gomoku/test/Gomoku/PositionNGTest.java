@@ -38,10 +38,10 @@ public class PositionNGTest {
      */
     @Test
     public void testGetLig() {
-        System.out.println("getLig");
+        System.out.println("getRow");
         Position instance = new Position(3,4);
         int expResult = 4;
-        int result = instance.getLig();
+        int result = instance.getRow();
         assertEquals(result, expResult);
     }
     
