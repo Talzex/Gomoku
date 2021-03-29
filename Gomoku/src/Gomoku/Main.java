@@ -5,17 +5,14 @@
  */
 package Gomoku;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author tduthil/jforme
+ * @author jforme
  */
-public class Game {
-    Color nextPlayer;
-    Board board;
-    
-    private boolean play(Position p){
-        return false;
+public class Main {
+    public static void main(String args[]){
+        Match.nb_colonnes = 11;
+        Match.nb_lignes = 8;
+       Board.dessiner();
     }
 }
