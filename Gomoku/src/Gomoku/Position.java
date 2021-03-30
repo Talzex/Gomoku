@@ -43,7 +43,7 @@ public class Position {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
                 if (Integer.parseInt(s) <= 25) {
-                    return Integer.parseInt(s);
+                    return Integer.parseInt(s) - 1;
                 } else {
                     throw new InvalidPositionException("La taille de la ligne doit être comprise entre 0 et 25.");
                 }
