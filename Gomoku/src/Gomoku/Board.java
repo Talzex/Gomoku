@@ -13,12 +13,15 @@ import java.util.Arrays;
  */
 public class Board {
 
+    static Color[][] color = new Color[Match.nb_colonnes][Match.nb_lignes];
+    
     static Color get(Position p) {
         return p.color;
     }
 
     static void set(Position p, Color c) {
         p.color = c;
+        color[p.col][p.row] = c;
     }
 
     static void dessinerLigne() {
@@ -53,10 +56,9 @@ public class Board {
             // affichage des nombres sur le côté
             System.out.print(i + 1 + " | ");
             while (u < Match.nb_colonnes) {
-                Position p = new Position(u, i);
-                if (p.color == Color.BLACK) {
+                if (color[u][i] == Color.BLACK) {
                     board[u][i] = "X";
-                } else if (p.color == Color.WHITE) {
+                } else if (color[u][i] == Color.WHITE) {
                     board[u][i] = "O";
                 }
                 System.out.print(board[u][i] + " ");

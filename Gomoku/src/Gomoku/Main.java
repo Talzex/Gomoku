@@ -17,12 +17,16 @@ public class Main {
         Board.dessiner();
         
         Position p = new Position("A4");
+        Position p1 = new Position("A1");
         
         System.out.println(p.col);
         System.out.println(p.row);
         
         Board.set(p, Color.BLACK);
-        System.out.println(Board.get(p));
+        System.out.println("La couleur de p : " + Board.get(p));
+        
+        Board.set(p1, Color.WHITE);
+        System.out.println("La couleur de p1 : " + Board.get(p1));
         
         Board.dessiner();
     }
