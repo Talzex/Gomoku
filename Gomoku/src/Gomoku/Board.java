@@ -29,6 +29,13 @@ public class Board {
     }
 
     static void dessiner() {
+        char letter = 'A';
+        System.out.print("     ");
+        for(int i = 0; i < Match.nb_colonnes; i++){
+            System.out.print(letter + " ");
+            letter += 1;
+        }
+        System.out.println("");
         dessinerLigne();
         for (int i = 0; i < Match.nb_lignes; i++) {
             int u = 0;

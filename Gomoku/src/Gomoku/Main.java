@@ -10,16 +10,13 @@ package Gomoku;
  * @author jforme
  */
 public class Main {
-    public static void main(String args[]){
-        Match.nb_colonnes = 11;
-        Match.nb_lignes = 8;
+    public static void main(String args[]) throws InvalidPositionException{
+        Match.nb_colonnes = 10;
+        Match.nb_lignes = 18;
         Board.dessiner();
         
-        // test vite fait
-        // manque une erreur si que des lettres
-        String s = "A20";
-        System.out.println(Position.rowToInt(s));
-        System.out.println(Position.colToInt(s));
-        
+        Position p = new Position("A4");
+        System.out.println(p.col);
+        System.out.println(p.row);
     }
 }

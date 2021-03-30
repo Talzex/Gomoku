@@ -12,17 +12,16 @@ package Gomoku;
 public class Position {
 
     final int row, col;
-    //final String coord;
     Color color;
 
-    public Position(int col, int row) {
+    public Position(int row, int col) {
         this.row = row;
         this.col = col;
         this.color = Color.NONE;
 
     }
 
-    public Position(String coord) {
+    public Position(String coord) throws InvalidPositionException {
         this.col = colToInt(coord);
         this.row = rowToInt(coord);
     }
@@ -35,27 +34,34 @@ public class Position {
         return this.row;
     }
 
-    public static final int colToInt(String coord) {
-        if (coord.length() >= 2) {
-            String s = String.valueOf(coord.charAt(1));
-            // Si on a un nombre à 2 chiffres
-            if (coord.length() > 2) {
-                s = s.concat(String.valueOf(coord.charAt(2)));
+    public static final int rowToInt(String coord) throws InvalidPositionException {
+        try {
+            if (coord.length() >= 2) {
+                String s = String.valueOf(coord.charAt(1));
+                // Si on a un nombre à 2 chiffres
+                if (coord.length() > 2) {
+                    s = s.concat(String.valueOf(coord.charAt(2)));
+                }
+                if (Integer.parseInt(s) <= 25) {
+                    return Integer.parseInt(s);
+                } else {
+                    throw new InvalidPositionException("La taille de la ligne doit être comprise entre 0 et 25.");
+                }
+            } else {
+                throw new InvalidPositionException("Une position doit être de la forme 'A0' ou 'A15'.");
             }
-            return Integer.parseInt(s);
-        } else {
-            // retourne une erreur
-            return -1;
+        } catch (NumberFormatException exception) {
+            throw new InvalidPositionException("Le type de caractère est invalide.");
         }
     }
 
-    public static int rowToInt(String coord) {
-        if (coord.length() >= 2) {
-            char i = coord.charAt(0);
-            return (int) i - (int) 'A';
-        } else {
-            return -1;
-        }
+    public static int colToInt(String coord) throws InvalidPositionException {
+            if (coord.length() >= 2) {
+                char i = coord.charAt(0);
+                return (int) i - (int) 'A';
+            } else {
+                throw new InvalidPositionException("Une position doit être de la forme 'A0' ou 'A15'.");
+            }
     }
 
     /*
