@@ -22,7 +22,7 @@ public class PositionNGTest {
      * Test of getCol method, of class Position.
      */
     @Test
-    public void testGetCol() {
+    public void testGetCol() throws InvalidPositionException {
         System.out.println("getCol");
         Position instance = new Position(3,4);
         int expResult = 3;
@@ -30,19 +30,28 @@ public class PositionNGTest {
         assertEquals(result, expResult);
         
         System.out.println("getColLettre");
-        /*Position instanceLettre = new Position("A4");*/
+        Position instanceLettre = new Position("A14");
+        int expResultLettre = 0;
+        int resultLettre = instanceLettre.getCol();
+        assertEquals(resultLettre, expResultLettre);
     }
 
     /**
      * Test of getLig method, of class Position.
      */
     @Test
-    public void testGetLig() {
+    public void testGetLig() throws InvalidPositionException {
         System.out.println("getRow");
         Position instance = new Position(3,4);
         int expResult = 4;
         int result = instance.getRow();
         assertEquals(result, expResult);
+        
+        System.out.println("getRowLettre");
+        Position instanceLettre = new Position("A14");
+        int expResultLettre = 13;
+        int resultLettre = instanceLettre.getRow();
+        assertEquals(resultLettre, expResultLettre);
     }
     
 }
