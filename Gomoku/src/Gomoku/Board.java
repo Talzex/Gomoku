@@ -5,7 +5,6 @@
  */
 package Gomoku;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -14,11 +13,11 @@ import java.util.Arrays;
  */
 public class Board {
 
-    Color get(Position p) {
+    static Color get(Position p) {
         return p.color;
     }
 
-    void set(Position p, Color c) {
+    static void set(Position p, Color c) {
         p.color = c;
     }
 
@@ -54,6 +53,12 @@ public class Board {
             // affichage des nombres sur le côté
             System.out.print(i + 1 + " | ");
             while (u < Match.nb_colonnes) {
+                Position p = new Position(u, i);
+                if (p.color == Color.BLACK) {
+                    board[u][i] = "X";
+                } else if (p.color == Color.WHITE) {
+                    board[u][i] = "O";
+                }
                 System.out.print(board[u][i] + " ");
                 u++;
             }

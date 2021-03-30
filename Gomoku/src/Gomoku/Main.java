@@ -13,10 +13,17 @@ public class Main {
     public static void main(String args[]) throws InvalidPositionException{
         Match.nb_colonnes = 10;
         Match.nb_lignes = 18;
+        
         Board.dessiner();
         
         Position p = new Position("A4");
+        
         System.out.println(p.col);
         System.out.println(p.row);
+        
+        Board.set(p, Color.BLACK);
+        System.out.println(Board.get(p));
+        
+        Board.dessiner();
     }
 }

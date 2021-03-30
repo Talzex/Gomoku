@@ -14,7 +14,7 @@ public class Position {
     final int row, col;
     Color color;
 
-    public Position(int row, int col) {
+    public Position(int col, int row) {
         this.row = row;
         this.col = col;
         this.color = Color.NONE;
