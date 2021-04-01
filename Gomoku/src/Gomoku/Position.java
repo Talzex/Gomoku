@@ -42,16 +42,16 @@ public class Position {
                 if (coord.length() > 2) {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
-                if (Integer.parseInt(s) <= 25) {
+                if (Integer.parseInt(s) <= 25 && Integer.parseInt(s) > 0) {
                     return Integer.parseInt(s) - 1;
                 } else {
-                    throw new InvalidPositionException("La taille de la ligne doit être comprise entre 0 et 25.");
+                    throw new InvalidPositionException("La taille de la ligne doit être comprise entre 1 et 25.");
                 }
             } else {
-                throw new InvalidPositionException("Une position doit être de la forme 'A0' ou 'A15'.");
+                throw new InvalidPositionException("Une position doit être de la forme 'A1' ou 'A15'.");
             }
         } catch (NumberFormatException exception) {
-            throw new InvalidPositionException("Le type de caractère est invalide.");
+            throw new InvalidPositionException("Le type de caractère est invalide." + exception);
         }
     }
 
@@ -60,7 +60,7 @@ public class Position {
                 char i = coord.charAt(0);
                 return (int) i - (int) 'A';
             } else {
-                throw new InvalidPositionException("Une position doit être de la forme 'A0' ou 'A15'.");
+                throw new InvalidPositionException("Une position doit être de la forme 'A1' ou 'A15'.");
             }
     }
 
