@@ -12,51 +12,59 @@ import java.util.Arrays;
  * @author tduthil/jforme
  */
 public class Board {
+    
+    public int nb_colonnes;
+    public int nb_lignes;
+    Color[][] color;
 
-    static Color[][] color = new Color[Match.nb_colonnes][Match.nb_lignes];
-    
-    
+    Board(int nb_colonnes, int nb_lignes) {
+        this.nb_colonnes = nb_colonnes;
+        this.nb_lignes = nb_lignes;
+        color = new Color[nb_colonnes][nb_lignes];
+    }
+
     static Color get(Position p) {
         return p.color;
     }
 
-    static void set(Position p, Color c) {
+    void set(Position p, Color c) {
         p.color = c;
         color[p.col][p.row] = c;
     }
 
-    static void dessinerLigne() {
+    void dessinerLigne() {
         System.out.print("   +");
-        for (int i = 0; i <= Match.nb_colonnes * 2; i++) {
+        for (int i = 0; i <= nb_colonnes * 2; i++) {
             System.out.print("-");
         }
         System.out.println("+");
     }
 
-    static void dessinerLettreHaut() {
+    void dessinerLettreHaut() {
         char letter = 'A';
         System.out.print("     ");
-        for (int i = 0; i < Match.nb_colonnes; i++) {
+        for (int i = 0; i < nb_colonnes; i++) {
             System.out.print(letter + " ");
             letter += 1;
         }
         System.out.println("");
     }
 
-    static void dessinerIntérieurBoard() {
+    void dessinerIntérieurBoard() {
+
         // création du board + remplissage vide
-        String board[][] = new String[Match.nb_colonnes][Match.nb_lignes];
+        String board[][] = new String[nb_colonnes][nb_lignes];
         for (String[] row : board) {
             Arrays.fill(row, " ");
         }
-        for (int i = 0; i < Match.nb_lignes; i++) {
+        for (int i = 0; i < nb_lignes; i++) {
             int u = 0;
             if (i < 9) {
                 System.out.print(" ");
             }
             // affichage des nombres sur le côté
             System.out.print(i + 1 + " | ");
-            while (u < Match.nb_colonnes) {
+            while (u < nb_colonnes) {
                 if (color[u][i] == Color.BLACK) {
                     board[u][i] = "X";
                 } else if (color[u][i] == Color.WHITE) {
@@ -70,7 +78,7 @@ public class Board {
         }
     }
 
-    static void dessiner() {
+    void dessiner() {
         dessinerLettreHaut();
         dessinerLigne();
         dessinerIntérieurBoard();

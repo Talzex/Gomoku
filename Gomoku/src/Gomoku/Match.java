@@ -10,15 +10,14 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Match {
-    static int nb_lignes;
-    static int nb_colonnes;
+    
+    Board b;
     Player joueur1;
     Player joueur2;
     
-    Match(int hauteur,int largeur, Player joueur1, Player joueur2) throws InvalidSizeException{   
+    Match(int largeur,int hauteur, Player joueur1, Player joueur2) throws InvalidSizeException{   
         if(hauteur >= 5 && hauteur <= 26 && largeur >= 5 && largeur <= 26){
-            Match.nb_lignes = hauteur;
-            Match.nb_colonnes = largeur;
+            b = new Board(largeur, hauteur);
         } else {
             throw new InvalidSizeException(hauteur, largeur);
         }
@@ -26,10 +25,8 @@ public class Match {
         this.joueur2 = joueur2;
     }
     
-    
-    public void run(){
-        System.out.println("Bienvenue");
-        System.out.println("Nos deux joueurs sont : ");
+    public void run() {
+        b.dessiner();
     }
 }
 
