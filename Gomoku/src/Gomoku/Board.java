@@ -15,6 +15,7 @@ public class Board {
 
     static Color[][] color = new Color[Match.nb_colonnes][Match.nb_lignes];
     
+    
     static Color get(Position p) {
         return p.color;
     }
@@ -42,7 +43,7 @@ public class Board {
         System.out.println("");
     }
 
-    static void dessinerBoard() {
+    static void dessinerIntérieurBoard() {
         // création du board + remplissage vide
         String board[][] = new String[Match.nb_colonnes][Match.nb_lignes];
         for (String[] row : board) {
@@ -72,7 +73,7 @@ public class Board {
     static void dessiner() {
         dessinerLettreHaut();
         dessinerLigne();
-        dessinerBoard();
+        dessinerIntérieurBoard();
         dessinerLigne();
     }
 }

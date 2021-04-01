@@ -10,14 +10,15 @@ package Gomoku;
  * @author jforme/tduthil
  */
 public class HumanPlayer implements Player {
-    String username;
+    public String username;
     
     public HumanPlayer(String username) {
         this.username = username;
-    }    
+    }
 
     @Override
     public Position choice(Board b) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

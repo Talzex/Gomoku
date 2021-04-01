@@ -26,6 +26,10 @@ public class Match {
         this.joueur2 = joueur2;
     }
     
-    Match m = new Match(20,20,new HumanPlayer("Anna"), new HumanPlayer("Bob")) {};
+    
+    public void run(){
+        System.out.println("Bienvenue");
+        System.out.println("Nos deux joueurs sont : ");
+    }
 }
 

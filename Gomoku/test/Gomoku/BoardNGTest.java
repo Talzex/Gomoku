@@ -85,7 +85,7 @@ public class BoardNGTest {
         Match.nb_colonnes = 10;
         Match.nb_lignes = 5;
         System.out.println("dessinerBoard");
-        Board.dessinerBoard();
+        Board.dessinerIntérieurBoard();
     }
 
     /**
