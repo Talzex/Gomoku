@@ -34,10 +34,12 @@ public class PositionNGTest {
         int expResultLettre = 0;
         int resultLettre = instanceLettre.getCol();
         assertEquals(resultLettre, expResultLettre);
+ 
     }
 
     /**
      * Test of getLig method, of class Position.
+     * @throws Gomoku.InvalidPositionException
      */
     @Test
     public void testGetLig() throws InvalidPositionException {
@@ -48,10 +50,20 @@ public class PositionNGTest {
         assertEquals(result, expResult);
         
         System.out.println("getRowLettre");
-        Position instanceLettre = new Position("A14");
-        int expResultLettre = 13;
+        Position instanceLettre = new Position("A13");
+        int expResultLettre = 12;
         int resultLettre = instanceLettre.getRow();
         assertEquals(resultLettre, expResultLettre);
+       
+    }
+    
+    @Test(expectedExceptions = InvalidPositionException.class)
+    public void testGetLigExcept() throws InvalidPositionException {       
+        System.out.println("getRowException");
+        Position instanceErreur = new Position("A0");
+        
+        System.out.println("getRowException2");
+        Position instanceErreur2 = new Position("A27");
     }
     
 }
