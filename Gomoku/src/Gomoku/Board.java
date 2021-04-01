@@ -23,7 +23,7 @@ public class Board {
         color = new Color[nb_colonnes][nb_lignes];
     }
 
-    static Color get(Position p) {
+     Color get(Position p) {
         return p.color;
     }
 

@@ -17,12 +17,7 @@ import org.testng.annotations.Test;
  * @author tduthil
  */
 public class BoardNGTest {
-
-    public void BordNGTest() {
-        Match.nb_colonnes = 10;
-        Match.nb_lignes = 5;
-        Board.dessiner();
-    }
+    Board b = new Board(10,20);
 
     /**
      * Test of get method, of class Board.
@@ -31,12 +26,9 @@ public class BoardNGTest {
     public void testGet() {
         System.out.println("get");
         Position p = new Position(1, 1);
-        Board instance = new Board();
-        Color expResult = null;
-        Color result = instance.get(p);
+        Color expResult = Color.NONE;
+        Color result = b.get(p);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -45,12 +37,10 @@ public class BoardNGTest {
     @Test
     public void testSet() {
         System.out.println("set");
-        Position p = null;
-        Color c = null;
-        Board instance = new Board();
-        instance.set(p, c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Position p = new Position(2, 2);
+        Color c = Color.WHITE;
+        b.set(p, c);
+        assertEquals(b.get(p),c);
     }
 
     /**
@@ -58,10 +48,8 @@ public class BoardNGTest {
      */
     @Test
     public void testDessinerLigne() {
-        Match.nb_colonnes = 10;
-        Match.nb_lignes = 5;
         System.out.println("dessinerLigne");
-        Board.dessinerLigne();
+        b.dessinerLigne();
 
     }
 
@@ -70,10 +58,8 @@ public class BoardNGTest {
      */
     @Test
     public void testDessinerLettreHaut() {
-        Match.nb_colonnes = 10;
-        Match.nb_lignes = 5;
         System.out.println("dessinerLettreHaut");
-        Board.dessinerLettreHaut();
+        b.dessinerLettreHaut();
 
     }
 
@@ -82,10 +68,8 @@ public class BoardNGTest {
      */
     @Test
     public void testDessinerBoard() {
-        Match.nb_colonnes = 10;
-        Match.nb_lignes = 5;
         System.out.println("dessinerBoard");
-        Board.dessinerIntérieurBoard();
+        b.dessinerIntérieurBoard();
     }
 
     /**
@@ -93,10 +77,8 @@ public class BoardNGTest {
      */
     @Test
     public void testDessiner() {
-        Match.nb_colonnes = 10;
-        Match.nb_lignes = 5;
         System.out.println("dessiner");
-        Board.dessiner();
+        b.dessiner();
     }
 
 }
