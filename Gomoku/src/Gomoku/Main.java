@@ -10,7 +10,14 @@ package Gomoku;
  * @author jforme
  */
 public class Main {
-    public static void main(String args[]) throws InvalidPositionException{
+    public static void main(String args[]) throws InvalidPositionException, InvalidSizeException{
+        
+        Match m = new Match(20,10, new HumanPlayer("Anna"), new HumanPlayer("Bob"));
+        m.run();
+        
+        
+        /*   
+        
         Match.nb_colonnes = 10;
         Match.nb_lignes = 18;
         
@@ -29,5 +36,7 @@ public class Main {
         System.out.println("La couleur de p1 : " + Board.get(p1));
         
         Board.dessiner();
+        
+        */
     }
 }
