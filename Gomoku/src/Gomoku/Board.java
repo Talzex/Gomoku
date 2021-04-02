@@ -12,9 +12,9 @@ import java.util.Arrays;
  * @author tduthil/jforme
  */
 public class Board {
-    
-    public int nb_colonnes;
-    public int nb_lignes;
+
+    static public int nb_colonnes;
+    static public int nb_lignes;
     Color[][] color;
 
     Board(int nb_colonnes, int nb_lignes) {
@@ -23,7 +23,7 @@ public class Board {
         color = new Color[nb_colonnes][nb_lignes];
     }
 
-     Color get(Position p) {
+    Color get(Position p) {
         return p.color;
     }
 
@@ -77,8 +77,8 @@ public class Board {
             System.out.println("");
         }
     }
-    
-    void initBoard(){
+
+    void initBoard() {
         color = new Color[nb_colonnes][nb_lignes];
         for (Color[] col : color) {
             Arrays.fill(col, Color.NONE);
@@ -91,15 +91,15 @@ public class Board {
         dessinerIntérieurBoard();
         dessinerLigne();
     }
-    
+
     /*
     * @return true ssi une case est libre
      */
     public boolean isFree(Position p) {
         return Color.NONE == this.color[p.col][p.row];
     }
-    
-    public boolean estDansPlateau(Position p){
-        return p.col >= 0 && p.col <= this.nb_colonnes && p.row >= 0 && p.row <= this.nb_lignes; 
+
+    public boolean estDansPlateau(Position p) {
+        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
     }
 }

@@ -29,16 +29,21 @@ public class Match {
         boolean ended = false;
         boolean win = false;
         b.initBoard();
+        int nbCoup = 1;
+        String joueur;
         do {
             Game.nextPlayer = Color.BLACK;
             Position p = joueur1.choice(b);
             b.set(p, Game.nextPlayer);
+            Game.coupsjoues.add(p);
             b.dessiner();
             Game.nextPlayer = Color.WHITE;
             Position p2 = joueur2.choice(b);
             b.set(p2, Game.nextPlayer);
+            Game.coupsjoues.add(p);
             b.dessiner();
+            //win = isWin();
+            //ended = isEnded();
         } while (!win && !ended);
     }
-
 }

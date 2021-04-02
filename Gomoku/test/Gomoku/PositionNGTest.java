@@ -6,10 +6,6 @@
 package Gomoku;
 
 import static org.testng.Assert.*;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -20,6 +16,7 @@ public class PositionNGTest {
 
     /**
      * Test of getCol method, of class Position.
+     * @throws Gomoku.InvalidCoordinatesException
      */
     @Test
     public void testGetCol() throws InvalidCoordinatesException {
@@ -39,7 +36,7 @@ public class PositionNGTest {
 
     /**
      * Test of getLig method, of class Position.
-     * @throws Gomoku.InvalidPositionException
+     * @throws Gomoku.InvalidCoordinatesException
      */
     @Test
     public void testGetLig() throws InvalidCoordinatesException {

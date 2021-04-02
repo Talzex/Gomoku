@@ -45,7 +45,7 @@ public class Position {
                 if (Integer.parseInt(s) <= 25 && Integer.parseInt(s) > 0) {
                     return Integer.parseInt(s) - 1;
                 } else {
-                    throw new InvalidCoordinatesException("La taille de la ligne doit être comprise entre 1 et 25.");
+                    System.out.println("La taille de la ligne doit être comprise entre 1 et " + Board.nb_lignes + ".");
                 }
             } else {
                 throw new InvalidCoordinatesException("Une position doit être de la forme 'A1' ou 'A15'.");
@@ -53,6 +53,7 @@ public class Position {
         } catch (NumberFormatException exception) {
             throw new InvalidCoordinatesException("Le type de caractère est invalide." + exception);
         }
+        return 500;
     }
 
     public static int colToInt(String coord) throws InvalidCoordinatesException {

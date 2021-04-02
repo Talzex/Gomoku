@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Game {
     public static Color nextPlayer;
     public static Board board;
-    public static ArrayList coupsjoues = new ArrayList();
+    public static ArrayList<Position> coupsjoues = new ArrayList();
     
     private boolean play(Position p){
         // Tente d'éxecuter un coup

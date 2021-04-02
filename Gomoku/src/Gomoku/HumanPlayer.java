@@ -31,11 +31,13 @@ public class HumanPlayer implements Player {
         Position p;
         boolean continuer;
         do {
-            System.out.println("Quel coup voulez-vous jouer " + this.username + " ?");
+            System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
             continuer = b.isFree(p) || !b.estDansPlateau(p);
             if(!continuer){
-                System.out.println("Ce choix de position n'est pas possible.");
+                System.out.println();
+                System.out.println("> Cette case est déjà occupée.");
+                System.out.println();
             }
         } while (!continuer);
         return p;
@@ -48,5 +50,5 @@ public class HumanPlayer implements Player {
         p = new Position(coupSaisi);
         return p;
     }
-
+    
 }
