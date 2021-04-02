@@ -9,9 +9,9 @@ package Gomoku;
  *
  * @author Julian Forme
  */
-public class InvalidPositionException extends Exception{
+public class InvalidCoordinatesException extends Exception{
 
-    InvalidPositionException(String s){
+    InvalidCoordinatesException(String s){
         super(s);
     }
     

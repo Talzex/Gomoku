@@ -77,11 +77,29 @@ public class Board {
             System.out.println("");
         }
     }
+    
+    void initBoard(){
+        color = new Color[nb_colonnes][nb_lignes];
+        for (Color[] col : color) {
+            Arrays.fill(col, Color.NONE);
+        }
+    }
 
     void dessiner() {
         dessinerLettreHaut();
         dessinerLigne();
         dessinerIntérieurBoard();
         dessinerLigne();
+    }
+    
+    /*
+    * @return true ssi une case est libre
+     */
+    public boolean isFree(Position p) {
+        return Color.NONE == this.color[p.col][p.row];
+    }
+    
+    public boolean estDansPlateau(Position p){
+        return p.col >= 0 && p.col <= this.nb_colonnes && p.row >= 0 && p.row <= this.nb_lignes; 
     }
 }

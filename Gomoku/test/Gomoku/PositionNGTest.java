@@ -22,7 +22,7 @@ public class PositionNGTest {
      * Test of getCol method, of class Position.
      */
     @Test
-    public void testGetCol() throws InvalidPositionException {
+    public void testGetCol() throws InvalidCoordinatesException {
         System.out.println("getCol");
         Position instance = new Position(3,4);
         int expResult = 3;
@@ -42,7 +42,7 @@ public class PositionNGTest {
      * @throws Gomoku.InvalidPositionException
      */
     @Test
-    public void testGetLig() throws InvalidPositionException {
+    public void testGetLig() throws InvalidCoordinatesException {
         System.out.println("getRow");
         Position instance = new Position(3,4);
         int expResult = 4;
@@ -57,8 +57,8 @@ public class PositionNGTest {
        
     }
     
-    @Test(expectedExceptions = InvalidPositionException.class)
-    public void testGetLigExcept() throws InvalidPositionException {       
+    @Test(expectedExceptions = InvalidCoordinatesException.class)
+    public void testGetLigExcept() throws InvalidCoordinatesException {       
         System.out.println("getRowException");
         Position instanceErreur = new Position("A0");
         

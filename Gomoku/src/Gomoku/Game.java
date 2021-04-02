@@ -12,11 +12,12 @@ import java.util.ArrayList;
  * @author tduthil/jforme
  */
 public class Game {
-    Color nextPlayer;
-    Board board;
-    ArrayList coupsjoues = new ArrayList();
+    public static Color nextPlayer;
+    public static Board board;
+    public static ArrayList coupsjoues = new ArrayList();
     
     private boolean play(Position p){
+        // Tente d'éxecuter un coup
         return false;
     }
 }

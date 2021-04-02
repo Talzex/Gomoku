@@ -11,7 +11,7 @@ package Gomoku;
  */
 public class Main {
 
-    public static void main(String args[]) throws InvalidPositionException, InvalidSizeException{
+    public static void main(String args[]) throws InvalidCoordinatesException, InvalidSizeException{
         
         Match m = new Match(20,10, new HumanPlayer("Anna"), new HumanPlayer("Bob"));
         m.run();

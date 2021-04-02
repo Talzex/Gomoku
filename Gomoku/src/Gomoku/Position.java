@@ -15,13 +15,13 @@ public class Position {
     Color color;
 
     public Position(int col, int row) {
-        this.row = row;
-        this.col = col;
+        this.row = row-1;
+        this.col = col-1;
         this.color = Color.NONE;
 
     }
 
-    public Position(String coord) throws InvalidPositionException {
+    public Position(String coord) throws InvalidCoordinatesException {
         this.col = colToInt(coord);
         this.row = rowToInt(coord);
     }
@@ -34,7 +34,7 @@ public class Position {
         return this.row;
     }
 
-    public static final int rowToInt(String coord) throws InvalidPositionException {
+    public static final int rowToInt(String coord) throws InvalidCoordinatesException {
         try {
             if (coord.length() >= 2) {
                 String s = String.valueOf(coord.charAt(1));
@@ -45,29 +45,23 @@ public class Position {
                 if (Integer.parseInt(s) <= 25 && Integer.parseInt(s) > 0) {
                     return Integer.parseInt(s) - 1;
                 } else {
-                    throw new InvalidPositionException("La taille de la ligne doit être comprise entre 1 et 25.");
+                    throw new InvalidCoordinatesException("La taille de la ligne doit être comprise entre 1 et 25.");
                 }
             } else {
-                throw new InvalidPositionException("Une position doit être de la forme 'A1' ou 'A15'.");
+                throw new InvalidCoordinatesException("Une position doit être de la forme 'A1' ou 'A15'.");
             }
         } catch (NumberFormatException exception) {
-            throw new InvalidPositionException("Le type de caractère est invalide." + exception);
+            throw new InvalidCoordinatesException("Le type de caractère est invalide." + exception);
         }
     }
 
-    public static int colToInt(String coord) throws InvalidPositionException {
+    public static int colToInt(String coord) throws InvalidCoordinatesException {
             if (coord.length() >= 2) {
                 char i = coord.charAt(0);
                 return (int) i - (int) 'A';
             } else {
-                throw new InvalidPositionException("Une position doit être de la forme 'A1' ou 'A15'.");
+                throw new InvalidCoordinatesException("Une position doit être de la forme 'A1' ou 'A15'.");
             }
     }
 
-    /*
-    * @return true ssi une case est libre
-     */
-    public boolean isFree() {
-        return this.color == Color.NONE;
-    }
 }
