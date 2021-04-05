@@ -11,4 +11,6 @@ package Gomoku;
  */
 public interface Player  {
     Position choice(Board b) throws InvalidCoordinatesException;
+    public String getUsername();
+    public void initUsername();
 }

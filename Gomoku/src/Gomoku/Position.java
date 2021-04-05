@@ -42,7 +42,7 @@ public class Position {
                 if (coord.length() > 2) {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
-                if (Integer.parseInt(s) <= 25 && Integer.parseInt(s) > 0) {
+                if (Integer.parseInt(s) <= Board.nb_lignes && Integer.parseInt(s) > 0) {
                     return Integer.parseInt(s) - 1;
                 } else {
                     System.out.println("La taille de la ligne doit être comprise entre 1 et " + Board.nb_lignes + ".");

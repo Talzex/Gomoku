@@ -21,6 +21,11 @@ public class HumanPlayer implements Player {
     }
 
     @Override
+    public String getUsername(){
+        return username;
+    }
+    
+    @Override
     public Position choice(Board b) throws InvalidCoordinatesException {
         Position p = writeCoordinates(b);
         b.set(p, Game.nextPlayer);
@@ -49,6 +54,18 @@ public class HumanPlayer implements Player {
         coupSaisi = in.nextLine();
         p = new Position(coupSaisi);
         return p;
+    }
+    
+    @Override
+    public void initUsername(){
+        if(Match.joueur1.getUsername().length() == 0){
+            System.out.println("> Comment s'appelle le joueur 1 ?");
+        } else {
+            System.out.println("> Comment s'appelle le joueur 2 ?");
+        }
+        do{
+            username = in.nextLine();
+        } while(username.length() == 0 || username.trim().equals(""));
     }
     
 }

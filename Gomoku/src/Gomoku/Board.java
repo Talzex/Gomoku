@@ -6,6 +6,7 @@
 package Gomoku;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -18,8 +19,8 @@ public class Board {
     Color[][] color;
 
     Board(int nb_colonnes, int nb_lignes) {
-        this.nb_colonnes = nb_colonnes;
-        this.nb_lignes = nb_lignes;
+        Board.nb_colonnes = nb_colonnes;
+        Board.nb_lignes = nb_lignes;
         color = new Color[nb_colonnes][nb_lignes];
     }
 
@@ -78,7 +79,41 @@ public class Board {
         }
     }
 
+    void initBoardSize() {
+        Scanner in = new Scanner(System.in);
+
+        int entierSaisi = 0;
+        boolean saisieCorrecte;
+        for (int i = 0; i < 2; i++) {
+            entierSaisi = 0;
+            saisieCorrecte = false;
+            do {
+                try {
+                    if (i == 0) {
+                        System.out.println("> Indiquez le nombre de colonnes du plateau (entre 5 et 26 inclus).");
+                    } else {
+                        System.out.println("> Indiquez le nombre de lignes du plateau (entre 5 et 26 inclus).");
+                    }
+                    entierSaisi = in.nextInt();
+                    saisieCorrecte = (entierSaisi >= 5 && entierSaisi <= 26);
+                    if (!saisieCorrecte) {
+                        System.out.println("> " + entierSaisi + " n'est pas compris entre 5 et 26...");
+                    }
+                } catch (java.util.InputMismatchException e) {
+                    System.err.println("> Saisie incorrecte, saisissez un entier compris entre 5 et 26 inclus.");
+                    in.next();
+                }
+            } while (!saisieCorrecte);
+            if (i == 0) {
+                nb_colonnes = entierSaisi;
+            } else {
+                nb_lignes = entierSaisi;
+            }
+        }
+    }
+
     void initBoard() {
+        initBoardSize();
         color = new Color[nb_colonnes][nb_lignes];
         for (Color[] col : color) {
             Arrays.fill(col, Color.NONE);
@@ -101,5 +136,33 @@ public class Board {
 
     public boolean estDansPlateau(Position p) {
         return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
+    }
+
+    public boolean isFull() {
+        boolean full = true;
+        for (int i = 0; i < nb_colonnes; i++) {
+            for (int u = 0; u < nb_lignes; u++) {
+                if(color[i][u] == Color.NONE){
+                    full = false;
+                }
+            }
+        }
+        return full;
+    }
+    
+    /*
+    public boolean rowComplete(){
+        Color actualColor;
+        boolean isRow = false;
+        for(int i = 0; i < nb_lignes; i++){
+            actualColor = Color.NONE;
+            for(int u = 0; u < nb_colonnes; u++){
+                actualColor = color[u][i];
+            }
+        }
+    }*/
+    
+    public boolean isWin(){
+        return false;
     }
 }
