@@ -166,7 +166,7 @@ public class Board {
                     count = 0;
                 }
 
-                if(count >= 5){
+                if(count >= Game.nbToWin){
                     isRow = true;
                 }
             }
@@ -190,7 +190,7 @@ public class Board {
                     count = 0;
                 }
 
-                if(count >= 5){
+                if(count >= Game.nbToWin){
                     isRow = true;
                 }
             }
