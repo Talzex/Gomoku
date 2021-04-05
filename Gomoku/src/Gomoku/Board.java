@@ -142,27 +142,63 @@ public class Board {
         boolean full = true;
         for (int i = 0; i < nb_colonnes; i++) {
             for (int u = 0; u < nb_lignes; u++) {
-                if(color[i][u] == Color.NONE){
+                if (color[i][u] == Color.NONE) {
                     full = false;
                 }
             }
         }
         return full;
     }
-    
-    /*
-    public boolean rowComplete(){
+
+    public boolean rowComplete() {
         Color actualColor;
         boolean isRow = false;
-        for(int i = 0; i < nb_lignes; i++){
-            actualColor = Color.NONE;
-            for(int u = 0; u < nb_colonnes; u++){
-                actualColor = color[u][i];
+        int count = 0;
+        for (int i = 0; i < nb_lignes; i++) {
+            actualColor = null;
+            count = 0;
+            for (int u = 0; u < nb_colonnes; u++) {
+                
+                if (color[u][i] != Color.NONE && (null == actualColor || actualColor == color[u][i])) {
+                    actualColor = color[u][i];
+                    count++;
+                } else {
+                    count = 0;
+                }
+
+                if(count >= 5){
+                    isRow = true;
+                }
             }
         }
-    }*/
+        return isRow;
+    }
     
-    public boolean isWin(){
-        return false;
+    public boolean colComplete() {
+        Color actualColor;
+        boolean isRow = false;
+        int count = 0;
+        for (int u = 0; u < nb_colonnes; u++) {
+            actualColor = null;
+            count = 0;
+            for (int i = 0; i < nb_lignes; i++) {
+                
+                if (color[u][i] != Color.NONE && (null == actualColor || actualColor == color[u][i])) {
+                    actualColor = color[u][i];
+                    count++;
+                } else {
+                    count = 0;
+                }
+
+                if(count >= 5){
+                    isRow = true;
+                }
+            }
+        }
+        return isRow;
+    }
+
+    public boolean isWin() {
+        return rowComplete() || colComplete();
     }
 }

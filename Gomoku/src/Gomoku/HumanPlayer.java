@@ -21,10 +21,10 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
-    
+
     @Override
     public Position choice(Board b) throws InvalidCoordinatesException {
         Position p = writeCoordinates(b);
@@ -39,7 +39,7 @@ public class HumanPlayer implements Player {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
             continuer = b.isFree(p) || !b.estDansPlateau(p);
-            if(!continuer){
+            if (!continuer) {
                 System.out.println();
                 System.out.println("> Cette case est déjà occupée.");
                 System.out.println();
@@ -55,17 +55,19 @@ public class HumanPlayer implements Player {
         p = new Position(coupSaisi);
         return p;
     }
-    
+
     @Override
-    public void initUsername(){
-        if(Match.joueur1.getUsername().length() == 0){
-            System.out.println("> Comment s'appelle le joueur 1 ?");
-        } else {
-            System.out.println("> Comment s'appelle le joueur 2 ?");
-        }
-        do{
+    public void initUsername() {
+        boolean continuer;
+        do {
+            if (Match.joueur1.getUsername().length() == 0) {
+                System.out.println("> Comment s'appelle le joueur 1 ?");
+            } else {
+                System.out.println("> Comment s'appelle le joueur 2 ?");
+            }
             username = in.nextLine();
-        } while(username.length() == 0 || username.trim().equals(""));
+            continuer = username.length() == 0 || username.trim().equals("") || Match.joueur2.getUsername().equals(Match.joueur1.getUsername());
+        } while (continuer);
     }
-    
+
 }

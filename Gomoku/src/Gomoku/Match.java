@@ -31,6 +31,9 @@ public class Match {
         b.initBoard();
         joueur1.initUsername();
         joueur2.initUsername();
+        System.out.println();
+        System.out.println("> Pour jouer il faut écrire une position de la forme 'A5', 'B12'.");
+        System.out.println();
         do {
             Game.nextPlayer = Color.BLACK;
             Position p = joueur1.choice(b);
@@ -38,20 +41,31 @@ public class Match {
             Game.coupsjoues.add(p);
             b.dessiner();
             ended = b.isFull();
-            if (!ended) {
+            win = b.isWin();
+            if (!ended && !win) {
                 Game.nextPlayer = Color.WHITE;
                 Position p2 = joueur2.choice(b);
                 b.set(p2, Game.nextPlayer);
                 Game.coupsjoues.add(p);
                 b.dessiner();
             }
-            //win = isWin();
+            win = b.isWin();
             ended = b.isFull();
         } while (!win && !ended);
 
         if (win) {
-            System.out.println("> Victoire du joueur " + joueur1.getUsername()
+            
+            if(Game.nextPlayer == Color.BLACK){
+                System.out.println();
+                System.out.println("> Victoire du joueur " + joueur1.getUsername()
                     + ".");
+                System.out.println();
+            } else {
+                System.out.println();
+                System.out.println("> Victoire du joueur " + joueur2.getUsername()
+                    + ".");
+                System.out.println();
+            } 
         } else {
             System.out.println("> Aucun joueur n'a gagné, match nul.");
         }
