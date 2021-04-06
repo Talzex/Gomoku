@@ -35,7 +35,7 @@ public class Position {
     }
 
     public static int rowToInt(String coord) throws InvalidCoordinatesException {
-     
+
         try {
             if (coord.length() >= 2) {
                 String s = String.valueOf(coord.charAt(1));
@@ -44,11 +44,10 @@ public class Position {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
                 if (Integer.parseInt(s) > 26 || Integer.parseInt(s) <= 0) {
-                    throw new InvalidCoordinatesException("Erreur : Taille entre 1 et 26" );
+                    throw new InvalidCoordinatesException("Erreur : Taille entre 1 et 26");
                 }
                 return Integer.parseInt(s) - 1;
-                        
-                  
+
             } else {
                 throw new InvalidCoordinatesException("Erreur : De la forme 'A1' ou 'A15'.");
             }
@@ -67,6 +66,24 @@ public class Position {
             }
         } catch (NumberFormatException exception) {
             throw new InvalidCoordinatesException("Erreur : Caractère Invalide");
-        } 
+        }
+    }
+
+    public static Position[] diagonalesCroissantes(Position p) {
+        Position[] diagonales = new Position[Game.nbToWin - 1];
+        diagonales[0] = new Position(p.col + 1, p.row - 1); // NORD-EST 1
+        diagonales[1] = new Position(p.col + 2, p.row - 2); // NORD-EST 2
+        diagonales[2] = new Position(p.col - 1, p.row + 1); // SUD-OUEST 1
+        diagonales[3] = new Position(p.col - 2, p.row + 2); // SUD-OUEST 2
+        return diagonales;
+    }
+
+    public static Position[] diagonalesDecroissantes(Position p) {
+        Position[] diagonales = new Position[Game.nbToWin - 1];
+        diagonales[0] = new Position(p.col - 1, p.row - 1); // NORD-OUEST 1
+        diagonales[1] = new Position(p.col - 2, p.row - 2); // NORD-OUEST 2
+        diagonales[2] = new Position(p.col + 1, p.row + 1); // SUD-EST 1
+        diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
+        return diagonales;
     }
 }

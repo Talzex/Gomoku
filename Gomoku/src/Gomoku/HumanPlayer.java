@@ -39,8 +39,8 @@ public class HumanPlayer implements Player {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
             continuer = b.isFree(p) && b.estDansPlateau(p);
-            if(!b.estDansPlateau(p)){
-                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes );
+            if (!b.estDansPlateau(p)) {
+                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes);
                 System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
             }
         } while (!continuer);
@@ -51,6 +51,10 @@ public class HumanPlayer implements Player {
         String coupSaisi;
         Position p;
         coupSaisi = in.nextLine();
+        if ("/quit".equals(coupSaisi)) {
+            System.out.println("> La partie a été annulée.");
+            System.exit(0);
+        }
         p = new Position(coupSaisi);
         return p;
     }
@@ -62,7 +66,7 @@ public class HumanPlayer implements Player {
             if (Match.joueur1.getUsername().length() == 0) {
                 System.out.println("> Comment s'appelle le joueur 1 ?");
             } else {
-                if(Match.joueur2.getUsername().equals(Match.joueur1.getUsername())){
+                if (Match.joueur2.getUsername().equals(Match.joueur1.getUsername())) {
                     System.out.println();
                     System.out.println("> Cet utilisateur existe déjà");
                     System.out.println();
@@ -70,6 +74,10 @@ public class HumanPlayer implements Player {
                 System.out.println("> Comment s'appelle le joueur 2 ?");
             }
             username = in.nextLine();
+            if ("/quit".equals(username)) {
+                System.out.println("> La partie a été annulée.");
+                System.exit(0);
+            }
             continuer = username.length() == 0 || username.trim().equals("") || Match.joueur2.getUsername().equals(Match.joueur1.getUsername());
         } while (continuer);
     }
