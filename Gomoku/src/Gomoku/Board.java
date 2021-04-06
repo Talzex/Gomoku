@@ -14,13 +14,13 @@ import java.util.Scanner;
  */
 public class Board {
 
-    static public int nb_colonnes;
-    static public int nb_lignes;
+    public int nb_colonnes;
+    public int nb_lignes;
     Color[][] color;
 
     Board(int nb_colonnes, int nb_lignes) {
-        Board.nb_colonnes = nb_colonnes;
-        Board.nb_lignes = nb_lignes;
+        this.nb_colonnes = nb_colonnes;
+        this.nb_colonnes = nb_lignes;
         color = new Color[nb_colonnes][nb_lignes];
     }
 
@@ -202,8 +202,64 @@ public class Board {
         }
         return isCol;
     }
+    
+    public Position[] diagonalesCroissantes(Position p){
+        Position[] diagonales = new Position[Game.nbToWin-1];
+        diagonales[0] = new Position(p.col + 1, p.row - 1); // NORD-EST 1
+        diagonales[1] = new Position(p.col + 2, p.row - 2); // NORD-EST 2
+        diagonales[2] = new Position(p.col - 1, p.row + 1); // SUD-OUEST 2
+        diagonales[3] = new Position(p.col - 2, p.row + 2); // SUD-OUEST 2
+        return diagonales;
+    }
+    
+    public Position[] diagonalesDecroissantes(Position p){
+        Position[] diagonales = new Position[Game.nbToWin-1];
+        diagonales[0] = new Position(p.col - 1, p.row - 1); // NORD-OUEST 1
+        diagonales[1] = new Position(p.col - 2, p.row - 2); // NORD-OUEST 2
+        diagonales[2] = new Position(p.col + 1, p.row + 1); // SUD-EST 2
+        diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
+        return diagonales;
+    }
+        
+    public boolean diagComplete(){
+        Color actualColor;
+        boolean isDiag = false;
+        int count = 0;
+        for (int u = 0; u < nb_colonnes; u++) {
+            actualColor = null;
+            count = 0;
+            for (int i = 0; i < nb_lignes; i++) {
+                Position p = new Position(u,i);
+                Position diagC[] = diagonalesCroissantes(p);
+                Position diagD[] = diagonalesDecroissantes(p);
+                for(int f = 0; f < Game.nbToWin; f++){
+                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i]){
+                        count++;
+                    } else {
+                        count = 0;
+                    }
+                    if(count >= 5){
+                        isDiag = true;
+                    }
+                }
+                count = 0;
+                for(int f = 0; f < Game.nbToWin; f++){
+                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i]){
+                        count++;
+                    } else {
+                        count = 0;
+                    }
+                    if(count >= 5){
+                        isDiag = true;
+                    }
+                }
+                
+            }
+        }
+        return isDiag;
+    }
 
     public boolean isWin() {
-        return rowComplete() || colComplete();
+        return rowComplete() || colComplete() || diagComplete();
     }
 }

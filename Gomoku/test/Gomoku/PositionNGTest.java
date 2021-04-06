@@ -49,7 +49,7 @@ public class PositionNGTest {
         System.out.println("getRowLettre");
         Position instanceLettre = new Position("A13");
         int expResultLettre = 12;
-        int resultLettre = instanceLettre.getRow();
+        int resultLettre = Position.rowToInt("A13");
         assertEquals(resultLettre, expResultLettre);
        
     }

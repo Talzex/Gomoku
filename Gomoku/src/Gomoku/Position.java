@@ -15,8 +15,8 @@ public class Position {
     Color color;
 
     public Position(int col, int row) {
-        this.row = row - 1;
-        this.col = col - 1;
+        this.row = row;
+        this.col = col;
         this.color = Color.NONE;
 
     }
@@ -70,4 +70,19 @@ public class Position {
         return coltoint;
     }
 
+    Position mvtHaut(){
+        return new Position(col, row-1);
+    }
+    
+    Position mvtBas(){
+        return new Position(col, row+1);
+    }
+    
+    Position mvtDroite(){
+        return new Position(col+1, row);
+    }
+    
+    Position mvtGauche(){
+        return new Position(col-1, row);
+    }
 }
