@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class HumanPlayer implements Player {
 
+    int tour = 0;
     static Scanner in = new Scanner(System.in);
     public String username;
 
@@ -35,12 +36,18 @@ public class HumanPlayer implements Player {
     public Position writeCoordinates(Board b) throws InvalidCoordinatesException {
         Position p;
         boolean continuer;
+        
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
-            continuer = b.isFree(p) && b.estDansPlateau(p);
-            if(!b.estDansPlateau(p)){
-                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes );
+            if (tour < 1) {
+                continuer = b.isFree(p) && b.estDansPlateau(p);
+            } else {
+                continuer = b.isFree(p) && b.estDansPlateau(p) && b.isAdj(p);
+            }
+            tour++;
+            if (!b.estDansPlateau(p)) {
+                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes);
                 System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
             }
         } while (!continuer);
@@ -62,7 +69,7 @@ public class HumanPlayer implements Player {
             if (Match.joueur1.getUsername().length() == 0) {
                 System.out.println("> Comment s'appelle le joueur 1 ?");
             } else {
-                if(Match.joueur2.getUsername().equals(Match.joueur1.getUsername())){
+                if (Match.joueur2.getUsername().equals(Match.joueur1.getUsername())) {
                     System.out.println();
                     System.out.println("> Cet utilisateur existe déjà");
                     System.out.println();

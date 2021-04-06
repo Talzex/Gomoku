@@ -143,6 +143,32 @@ public class Board {
         return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
     }
 
+    public Position[] PositionAdj(Position p) {
+        Position[] adj = new Position[8];
+        adj[0] = new Position(p.col + 1, p.row); // NORD
+        adj[1] = new Position(p.col - 1, p.row); // SUD
+        adj[2] = new Position(p.col, p.row + 1);
+        adj[3] = new Position(p.col, p.row - 1);
+        adj[4] = new Position(p.col + 1, p.row + 1);
+        adj[5] = new Position(p.col - 1, p.row + 1);
+        adj[6] = new Position(p.col + 1, p.row - 1);
+        adj[7] = new Position(p.col - 1, p.row - 1);
+        return adj;
+    }
+
+    public boolean isAdj(Position p) {
+        boolean isadj = false;
+        Position adj[] = PositionAdj(p);
+        for (int f = 0; f < 8; f++) {
+            if (estDansPlateau(adj[f])) {
+                if (color[adj[f].col][adj[f].row] == Game.nextPlayer) {
+                    isadj = true;
+                }
+            }
+        }
+        return isadj;
+    }
+
     public boolean isFull() {
         boolean full = true;
         for (int i = 0; i < nb_colonnes; i++) {
@@ -254,11 +280,11 @@ public class Board {
                         } else {
                             count = 0;
                         }
-                        
+
                     }
                     if (count >= 4) {
-                            isDiag = true;
-                        }
+                        isDiag = true;
+                    }
                 }
 
             }
