@@ -20,7 +20,7 @@ public class Board {
 
     Board(int nb_colonnes, int nb_lignes) {
         this.nb_colonnes = nb_colonnes;
-        this.nb_colonnes = nb_lignes;
+        this.nb_lignes = nb_lignes;
         color = new Color[nb_colonnes][nb_lignes];
     }
 

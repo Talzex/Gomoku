@@ -40,7 +40,8 @@ public class HumanPlayer implements Player {
             p = readCoordinates(b);
             continuer = b.isFree(p) && b.estDansPlateau(p);
             if(!b.estDansPlateau(p)){
-                System.err.println("Une position doit être de la forme 'A1' ou 'A15' en étant compris entre 1 et " + Board.nb_lignes + ".");
+                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes );
+                System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
             }
         } while (!continuer);
         return p;

@@ -11,8 +11,8 @@ package Gomoku;
  */
 public class InvalidCoordinatesException extends Exception{
 
-    InvalidCoordinatesException(String s){
-        super(s);
+    public InvalidCoordinatesException(String s){
+        System.err.println(s);
     }
     
 }

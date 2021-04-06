@@ -35,7 +35,7 @@ public class Position {
     }
 
     public static int rowToInt(String coord) throws InvalidCoordinatesException {
-        int rowtoint = -1;
+     
         try {
             if (coord.length() >= 2) {
                 String s = String.valueOf(coord.charAt(1));
@@ -43,32 +43,33 @@ public class Position {
                 if (coord.length() > 2) {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
-                if (Integer.parseInt(s) <= Board.nb_lignes && Integer.parseInt(s) > 0) {
-
-                    rowtoint = Integer.parseInt(s) - 1;
+                if (Integer.parseInt(s) > 26 || Integer.parseInt(s) <= 0) {
+                    throw new InvalidCoordinatesException("Erreur : Taille entre 1 et 26" );
                 }
+                return Integer.parseInt(s) - 1;
+                        
+                  
+            } else {
+                throw new InvalidCoordinatesException("Erreur : De la forme 'A1' ou 'A15'.");
             }
         } catch (NumberFormatException exception) {
-            System.err.println("Le type de caractère est invalide." + exception);
-
+            throw new InvalidCoordinatesException("Erreur : Caractère Invalide");
         }
-        return rowtoint;
     }
 
     public static int colToInt(String coord) throws InvalidCoordinatesException {
-        int coltoint = 0;
         try {
             if (coord.length() >= 2) {
                 char i = coord.charAt(0);
-                return coltoint = (int) i - (int) 'A';
+                return (int) i - (int) 'A';
             } else {
-                System.err.println("Une position doit être de la forme 'A1' ou 'A15'.");
+                throw new InvalidCoordinatesException("Erreur : De la forme 'A1' ou 'A15'.");
             }
         } catch (NumberFormatException exception) {
-            System.err.println("Le type de caractère est invalide." + exception);
-        }
-        return coltoint;
+            throw new InvalidCoordinatesException("Erreur : Caractère Invalide");
+        } 
     }
+<<<<<<< HEAD
 
     Position mvtHaut(){
         return new Position(col, row-1);
@@ -85,4 +86,6 @@ public class Position {
     Position mvtGauche(){
         return new Position(col-1, row);
     }
+=======
+>>>>>>> master
 }
