@@ -240,9 +240,6 @@ public class Board {
                         } else {
                             count = 0;
                         }
-                        if (count >= 4) {
-                            isDiag = true;
-                        }
                     }
                     if (count >= 4) {
                         isDiag = true;
@@ -257,10 +254,11 @@ public class Board {
                         } else {
                             count = 0;
                         }
-                        if (count >= 4) {
+                        
+                    }
+                    if (count >= 4) {
                             isDiag = true;
                         }
-                    }
                 }
 
             }
