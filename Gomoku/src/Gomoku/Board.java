@@ -131,11 +131,16 @@ public class Board {
     * @return true ssi une case est libre
      */
     public boolean isFree(Position p) {
-        return Color.NONE == this.color[p.col][p.row];
+        boolean isFree = true;
+        try {
+            isFree = Color.NONE == this.color[p.col][p.row];
+        } catch (ArrayIndexOutOfBoundsException exception) {
+        } 
+        return isFree;
     }
 
     public boolean estDansPlateau(Position p) {
-        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
+        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row <= nb_lignes;
     }
 
     public boolean isFull() {
@@ -158,7 +163,7 @@ public class Board {
             actualColor = null;
             count = 0;
             for (int u = 0; u < nb_colonnes; u++) {
-                
+
                 if (color[u][i] != Color.NONE && (null == actualColor || actualColor == color[u][i])) {
                     actualColor = color[u][i];
                     count++;
@@ -166,14 +171,14 @@ public class Board {
                     count = 0;
                 }
 
-                if(count >= Game.nbToWin){
+                if (count >= Game.nbToWin) {
                     isRow = true;
                 }
             }
         }
         return isRow;
     }
-    
+
     public boolean colComplete() {
         Color actualColor;
         boolean isRow = false;
@@ -182,7 +187,7 @@ public class Board {
             actualColor = null;
             count = 0;
             for (int i = 0; i < nb_lignes; i++) {
-                
+
                 if (color[u][i] != Color.NONE && (null == actualColor || actualColor == color[u][i])) {
                     actualColor = color[u][i];
                     count++;
@@ -190,7 +195,7 @@ public class Board {
                     count = 0;
                 }
 
-                if(count >= Game.nbToWin){
+                if (count >= Game.nbToWin) {
                     isRow = true;
                 }
             }

@@ -15,8 +15,8 @@ public class Position {
     Color color;
 
     public Position(int col, int row) {
-        this.row = row-1;
-        this.col = col-1;
+        this.row = row - 1;
+        this.col = col - 1;
         this.color = Color.NONE;
 
     }
@@ -34,7 +34,8 @@ public class Position {
         return this.row;
     }
 
-    public static final int rowToInt(String coord) throws InvalidCoordinatesException {
+    public static int rowToInt(String coord) throws InvalidCoordinatesException {
+        int rowtoint = -1;
         try {
             if (coord.length() >= 2) {
                 String s = String.valueOf(coord.charAt(1));
@@ -43,26 +44,30 @@ public class Position {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
                 if (Integer.parseInt(s) <= Board.nb_lignes && Integer.parseInt(s) > 0) {
-                    return Integer.parseInt(s) - 1;
-                } else {
-                    System.out.println("La taille de la ligne doit être comprise entre 1 et " + Board.nb_lignes + ".");
+
+                    rowtoint = Integer.parseInt(s) - 1;
                 }
-            } else {
-                throw new InvalidCoordinatesException("Une position doit être de la forme 'A1' ou 'A15'.");
             }
         } catch (NumberFormatException exception) {
-            throw new InvalidCoordinatesException("Le type de caractère est invalide." + exception);
+            System.err.println("Le type de caractère est invalide." + exception);
+
         }
-        return 500;
+        return rowtoint;
     }
 
     public static int colToInt(String coord) throws InvalidCoordinatesException {
+        int coltoint = 0;
+        try {
             if (coord.length() >= 2) {
                 char i = coord.charAt(0);
-                return (int) i - (int) 'A';
+                return coltoint = (int) i - (int) 'A';
             } else {
-                throw new InvalidCoordinatesException("Une position doit être de la forme 'A1' ou 'A15'.");
+                System.err.println("Une position doit être de la forme 'A1' ou 'A15'.");
             }
+        } catch (NumberFormatException exception) {
+            System.err.println("Le type de caractère est invalide." + exception);
+        }
+        return coltoint;
     }
 
 }

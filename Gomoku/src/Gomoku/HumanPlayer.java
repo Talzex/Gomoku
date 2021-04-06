@@ -38,11 +38,9 @@ public class HumanPlayer implements Player {
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
-            continuer = b.isFree(p) || !b.estDansPlateau(p);
-            if (!continuer) {
-                System.out.println();
-                System.out.println("> Cette case est déjà occupée.");
-                System.out.println();
+            continuer = b.isFree(p) && b.estDansPlateau(p);
+            if(!b.estDansPlateau(p)){
+                System.err.println("Une position doit être de la forme 'A1' ou 'A15' en étant compris entre 1 et " + Board.nb_lignes + ".");
             }
         } while (!continuer);
         return p;
