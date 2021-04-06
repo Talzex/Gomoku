@@ -135,12 +135,12 @@ public class Board {
         try {
             isFree = Color.NONE == this.color[p.col][p.row];
         } catch (ArrayIndexOutOfBoundsException exception) {
-        } 
+        }
         return isFree;
     }
 
     public boolean estDansPlateau(Position p) {
-        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row <= nb_lignes;
+        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
     }
 
     public boolean isFull() {
@@ -202,61 +202,67 @@ public class Board {
         }
         return isCol;
     }
-    
-    public Position[] diagonalesCroissantes(Position p){
-        Position[] diagonales = new Position[Game.nbToWin-1];
+
+    public Position[] diagonalesCroissantes(Position p) {
+        Position[] diagonales = new Position[Game.nbToWin - 1];
         diagonales[0] = new Position(p.col + 1, p.row - 1); // NORD-EST 1
         diagonales[1] = new Position(p.col + 2, p.row - 2); // NORD-EST 2
-        diagonales[2] = new Position(p.col - 1, p.row + 1); // SUD-OUEST 2
+        diagonales[2] = new Position(p.col - 1, p.row + 1); // SUD-OUEST 1
         diagonales[3] = new Position(p.col - 2, p.row + 2); // SUD-OUEST 2
         return diagonales;
     }
-    
-    public Position[] diagonalesDecroissantes(Position p){
-        Position[] diagonales = new Position[Game.nbToWin-1];
+
+    public Position[] diagonalesDecroissantes(Position p) {
+        Position[] diagonales = new Position[Game.nbToWin - 1];
         diagonales[0] = new Position(p.col - 1, p.row - 1); // NORD-OUEST 1
         diagonales[1] = new Position(p.col - 2, p.row - 2); // NORD-OUEST 2
-        diagonales[2] = new Position(p.col + 1, p.row + 1); // SUD-EST 2
+        diagonales[2] = new Position(p.col + 1, p.row + 1); // SUD-EST 1
         diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
         return diagonales;
     }
-        
-    public boolean diagComplete(){
+
+    public boolean diagComplete() {
         boolean isDiag = false;
         int count = 0;
         for (int u = 0; u < nb_colonnes; u++) {
             for (int i = 0; i < nb_lignes; i++) {
-                
+
                 count = 0;
-                
-                Position p = new Position(u,i);
+
+                Position p = new Position(u, i);
                 Position diagC[] = diagonalesCroissantes(p);
                 Position diagD[] = diagonalesDecroissantes(p);
-                
-                for(int f = 0; f < 4; f++){
-                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i] && color[u][i] != Color.NONE){
-                        count++;
-                        System.out.println("count" + count);
-                    } else {
-                        System.out.println("err");
-                        count = 0;
+
+                for (int f = 0; f < 4; f++) {
+                    if (estDansPlateau(diagC[f])) {
+                        if (color[diagC[f].col][diagC[f].row] == color[u][i] && color[u][i] != Color.NONE) {
+                            count++;
+                        } else {
+                            count = 0;
+                        }
+                        if (count >= 4) {
+                            isDiag = true;
+                        }
                     }
-                    if(count >= 4){
+                    if (count >= 4) {
                         isDiag = true;
                     }
                 }
                 count = 0;
-                for(int f = 0; f < 4; f++){
-                    if(estDansPlateau(diagD[f]) && diagD[f].color == color[u][i] && color[u][i] != Color.NONE){
-                        count++;
-                    } else {
-                        count = 0;
-                    }
-                    if(count >= 4){
-                        isDiag = true;
+                for (int f = 0; f < 4; f++) {
+                    if (estDansPlateau(diagD[f])) {
+                        if (color[diagD[f].col][diagD[f].row] == color[u][i] && color[u][i] != Color.NONE) {
+                            count++;
+                            System.out.println("count" + count);
+                        } else {
+                            count = 0;
+                        }
+                        if (count >= 4) {
+                            isDiag = true;
+                        }
                     }
                 }
-                
+
             }
         }
         return isDiag;
