@@ -63,6 +63,11 @@ public class HumanPlayer implements Player {
             if (Match.joueur1.getUsername().length() == 0) {
                 System.out.println("> Comment s'appelle le joueur 1 ?");
             } else {
+                if(Match.joueur2.getUsername().equals(Match.joueur1.getUsername())){
+                    System.out.println();
+                    System.out.println("> Cet utilisateur existe déjà");
+                    System.out.println();
+                }
                 System.out.println("> Comment s'appelle le joueur 2 ?");
             }
             username = in.nextLine();

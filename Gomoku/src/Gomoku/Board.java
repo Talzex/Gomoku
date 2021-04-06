@@ -176,7 +176,7 @@ public class Board {
     
     public boolean colComplete() {
         Color actualColor;
-        boolean isRow = false;
+        boolean isCol = false;
         int count = 0;
         for (int u = 0; u < nb_colonnes; u++) {
             actualColor = null;
@@ -191,11 +191,11 @@ public class Board {
                 }
 
                 if(count >= Game.nbToWin){
-                    isRow = true;
+                    isCol = true;
                 }
             }
         }
-        return isRow;
+        return isCol;
     }
 
     public boolean isWin() {
