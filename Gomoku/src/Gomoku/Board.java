@@ -14,13 +14,13 @@ import java.util.Scanner;
  */
 public class Board {
 
-    static public int nb_colonnes;
-    static public int nb_lignes;
+    public int nb_colonnes;
+    public int nb_lignes;
     Color[][] color;
 
     Board(int nb_colonnes, int nb_lignes) {
-        Board.nb_colonnes = nb_colonnes;
-        Board.nb_lignes = nb_lignes;
+        this.nb_colonnes = nb_colonnes;
+        this.nb_lignes = nb_lignes;
         color = new Color[nb_colonnes][nb_lignes];
     }
 

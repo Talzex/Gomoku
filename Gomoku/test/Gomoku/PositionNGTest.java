@@ -27,9 +27,8 @@ public class PositionNGTest {
         assertEquals(result, expResult);
         
         System.out.println("getColLettre");
-        Position instanceLettre = new Position("A14");
         int expResultLettre = 0;
-        int resultLettre = instanceLettre.getCol();
+        int resultLettre = Position.colToInt("A14");
         assertEquals(resultLettre, expResultLettre);
  
     }
@@ -40,6 +39,7 @@ public class PositionNGTest {
      */
     @Test
     public void testGetLig() throws InvalidCoordinatesException {
+        
         System.out.println("getRow");
         Position instance = new Position(3,4);
         int expResult = 4;
@@ -47,9 +47,8 @@ public class PositionNGTest {
         assertEquals(result, expResult);
         
         System.out.println("getRowLettre");
-        Position instanceLettre = new Position("A13");
         int expResultLettre = 12;
-        int resultLettre = instanceLettre.getRow();
+        int resultLettre = Position.rowToInt("A13");
         assertEquals(resultLettre, expResultLettre);
        
     }
