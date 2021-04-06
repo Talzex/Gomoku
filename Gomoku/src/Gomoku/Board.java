@@ -222,34 +222,37 @@ public class Board {
     }
         
     public boolean diagComplete(){
-        Color actualColor;
         boolean isDiag = false;
         int count = 0;
         for (int u = 0; u < nb_colonnes; u++) {
-            actualColor = null;
-            count = 0;
             for (int i = 0; i < nb_lignes; i++) {
+                
+                count = 0;
+                
                 Position p = new Position(u,i);
                 Position diagC[] = diagonalesCroissantes(p);
                 Position diagD[] = diagonalesDecroissantes(p);
-                for(int f = 0; f < Game.nbToWin; f++){
-                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i]){
+                
+                for(int f = 0; f < 4; f++){
+                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i] && color[u][i] != Color.NONE){
                         count++;
+                        System.out.println("count" + count);
                     } else {
+                        System.out.println("err");
                         count = 0;
                     }
-                    if(count >= 5){
+                    if(count >= 4){
                         isDiag = true;
                     }
                 }
                 count = 0;
-                for(int f = 0; f < Game.nbToWin; f++){
-                    if(estDansPlateau(diagC[f]) && diagC[f].color == color[u][i]){
+                for(int f = 0; f < 4; f++){
+                    if(estDansPlateau(diagD[f]) && diagD[f].color == color[u][i] && color[u][i] != Color.NONE){
                         count++;
                     } else {
                         count = 0;
                     }
-                    if(count >= 5){
+                    if(count >= 4){
                         isDiag = true;
                     }
                 }

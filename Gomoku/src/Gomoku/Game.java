@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Game {
     public static Color nextPlayer;
-    public static Board board;
+    public Board board;
     public static int nbToWin = 5;
     public static ArrayList<Position> coupsjoues = new ArrayList();
     

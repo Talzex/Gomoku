@@ -69,23 +69,4 @@ public class Position {
             throw new InvalidCoordinatesException("Erreur : Caractère Invalide");
         } 
     }
-<<<<<<< HEAD
-
-    Position mvtHaut(){
-        return new Position(col, row-1);
-    }
-    
-    Position mvtBas(){
-        return new Position(col, row+1);
-    }
-    
-    Position mvtDroite(){
-        return new Position(col+1, row);
-    }
-    
-    Position mvtGauche(){
-        return new Position(col-1, row);
-    }
-=======
->>>>>>> master
 }
