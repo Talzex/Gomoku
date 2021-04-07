@@ -58,6 +58,10 @@ public class HumanPlayer implements Player {
         String coupSaisi;
         Position p;
         coupSaisi = in.nextLine();
+        if ("/quit".equals(coupSaisi)) {
+            System.out.println("> La partie a été annulée.");
+            System.exit(0);
+        }
         p = new Position(coupSaisi);
         return p;
     }
@@ -77,6 +81,10 @@ public class HumanPlayer implements Player {
                 System.out.println("> Comment s'appelle le joueur 2 ?");
             }
             username = in.nextLine();
+            if ("/quit".equals(username)) {
+                System.out.println("> La partie a été annulée.");
+                System.exit(0);
+            }
             continuer = username.length() == 0 || username.trim().equals("") || Match.joueur2.getUsername().equals(Match.joueur1.getUsername());
         } while (continuer);
     }

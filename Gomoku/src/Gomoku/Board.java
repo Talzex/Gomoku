@@ -229,24 +229,6 @@ public class Board {
         return isCol;
     }
 
-    public Position[] diagonalesCroissantes(Position p) {
-        Position[] diagonales = new Position[Game.nbToWin - 1];
-        diagonales[0] = new Position(p.col + 1, p.row - 1); // NORD-EST 1
-        diagonales[1] = new Position(p.col + 2, p.row - 2); // NORD-EST 2
-        diagonales[2] = new Position(p.col - 1, p.row + 1); // SUD-OUEST 1
-        diagonales[3] = new Position(p.col - 2, p.row + 2); // SUD-OUEST 2
-        return diagonales;
-    }
-
-    public Position[] diagonalesDecroissantes(Position p) {
-        Position[] diagonales = new Position[Game.nbToWin - 1];
-        diagonales[0] = new Position(p.col - 1, p.row - 1); // NORD-OUEST 1
-        diagonales[1] = new Position(p.col - 2, p.row - 2); // NORD-OUEST 2
-        diagonales[2] = new Position(p.col + 1, p.row + 1); // SUD-EST 1
-        diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
-        return diagonales;
-    }
-
     public boolean diagComplete() {
         boolean isDiag = false;
         int count = 0;
@@ -256,8 +238,8 @@ public class Board {
                 count = 0;
 
                 Position p = new Position(u, i);
-                Position diagC[] = diagonalesCroissantes(p);
-                Position diagD[] = diagonalesDecroissantes(p);
+                Position diagC[] = Position.diagonalesCroissantes(p);
+                Position diagD[] = Position.diagonalesDecroissantes(p);
 
                 for (int f = 0; f < 4; f++) {
                     if (estDansPlateau(diagC[f])) {
@@ -272,11 +254,11 @@ public class Board {
                     }
                 }
                 count = 0;
+
                 for (int f = 0; f < 4; f++) {
                     if (estDansPlateau(diagD[f])) {
                         if (color[diagD[f].col][diagD[f].row] == color[u][i] && color[u][i] != Color.NONE) {
                             count++;
-                            System.out.println("count" + count);
                         } else {
                             count = 0;
                         }
