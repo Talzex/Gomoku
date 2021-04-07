@@ -86,4 +86,17 @@ public class Position {
         diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
         return diagonales;
     }
+    
+    public static Position[] PositionAdj(Position p) {
+        Position[] adj = new Position[8];
+        adj[0] = new Position(p.col + 1, p.row); // NORD
+        adj[1] = new Position(p.col - 1, p.row); // SUD
+        adj[2] = new Position(p.col, p.row + 1);
+        adj[3] = new Position(p.col, p.row - 1);
+        adj[4] = new Position(p.col + 1, p.row + 1);
+        adj[5] = new Position(p.col - 1, p.row + 1);
+        adj[6] = new Position(p.col + 1, p.row - 1);
+        adj[7] = new Position(p.col - 1, p.row - 1);
+        return adj;
+    }
 }

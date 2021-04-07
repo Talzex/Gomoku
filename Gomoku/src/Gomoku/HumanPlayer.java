@@ -13,9 +13,9 @@ import java.util.Scanner;
  */
 public class HumanPlayer implements Player {
 
-    int tour = 0;
     static Scanner in = new Scanner(System.in);
     public String username;
+    //public int tour = 0;
 
     public HumanPlayer(String username) {
         this.username = username;
@@ -40,12 +40,12 @@ public class HumanPlayer implements Player {
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
-            if (tour < 1) {
+            if (Game.tour < 2) {
                 continuer = b.isFree(p) && b.estDansPlateau(p);
             } else {
                 continuer = b.isFree(p) && b.estDansPlateau(p) && b.isAdj(p);
             }
-            tour++;
+            Game.tour++;
             if (!b.estDansPlateau(p)) {
                 System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes);
                 System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
