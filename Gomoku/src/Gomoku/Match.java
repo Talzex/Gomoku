@@ -10,12 +10,19 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Match {
-
     Board b;
     static Player joueur1;
     static Player joueur2;
 
-    Match(int largeur, int hauteur, Player j1, Player j2) throws InvalidSizeException {
+    /**
+     * Constructeur de la classe Match
+     * @param largeur, la largeur choisit par le joueur
+     * @param hauteur, la hauteur choisit par le joueur
+     * @param j1, le joueur 1
+     * @param j2, le joueur 2
+     * @throws InvalidSizeException
+     */
+     Match(int largeur, int hauteur, Player j1, Player j2) throws InvalidSizeException {
         if (hauteur >= 5 && hauteur <= 26 && largeur >= 5 && largeur <= 26) {
             b = new Board(largeur, hauteur);
         } else {
@@ -25,7 +32,11 @@ public class Match {
         joueur2 = j2;
     }
 
-    public void run() throws InvalidCoordinatesException {
+    /**
+     * Méthode permettant de lancer le jeu, de l'arrêter sous certaines conditions
+     * @throws InvalidCoordinatesException
+     */
+    public void run() throws InvalidCoordinatesException  {
         boolean ended = false;
         boolean win = false;
         b.initBoard();

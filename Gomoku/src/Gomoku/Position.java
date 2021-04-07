@@ -14,6 +14,12 @@ public class Position {
     final int row, col;
     Color color;
 
+    /**
+     * Constructeur de la classe Position utilisant 2
+     * paramètres entiers.
+     * @param col colonne de notre plateau 
+     * @param row ligne de notre plateau
+     */
     public Position(int col, int row) {
         this.row = row;
         this.col = col;
@@ -21,19 +27,42 @@ public class Position {
 
     }
 
+    /**
+     * Constructeur de la classse Position utilisant 1 paramètre
+     * , une chaîne  de caratères.
+     * @param coord Position choisit par le joueur sous la forme : "A3"
+     * @throws InvalidCoordinatesException
+     */
     public Position(String coord) throws InvalidCoordinatesException {
         this.col = colToInt(coord);
         this.row = rowToInt(coord);
     }
 
+    /**
+     * Méthode pour obtenir seulement la colonne.
+     * @return la colonne du plateau
+     */
     public int getCol() {
         return this.col;
     }
 
+    /**
+     * Méthode pour obtenier seulement la ligne.
+     * @return la ligne du plateau
+     */
     public int getRow() {
         return this.row;
     }
 
+    /**
+     * Méthode permettant de convertir la ligne de notre chaîne de caratères
+     * en vérifiant que les différentes conditions ont été respectées, sinon des exceptions
+     * se levent.
+     * 
+     * @param coord Position jouée par le joueur sous la forme : "A3"
+     * @return le numéro de la ligne 
+     * @throws InvalidCoordinatesException
+     */
     public static int rowToInt(String coord) throws InvalidCoordinatesException {
 
         try {
@@ -44,7 +73,7 @@ public class Position {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
                 if (Integer.parseInt(s) > 26 || Integer.parseInt(s) <= 0) {
-                    throw new InvalidCoordinatesException("Erreur : Taille entre 1 et 26");
+                    throw new InvalidCoordinatesException("Erreur : Position entre 1 et 26");
                 }
                 return Integer.parseInt(s) - 1;
 
@@ -56,6 +85,14 @@ public class Position {
         }
     }
 
+    /**
+     * Méthode permettant de convertir la colonne de notre chaîne de caratères
+     * en vérifiant que les différentes conditions ont été respectées, sinon des exceptions
+     * se levent.
+     * @param coord Position jouée par le joueur sous la forme : "A3"
+     * @return le numéro de la colonne convertit.
+     * @throws InvalidCoordinatesException
+     */
     public static int colToInt(String coord) throws InvalidCoordinatesException {
         try {
             if (coord.length() >= 2) {

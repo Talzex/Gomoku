@@ -17,15 +17,29 @@ public class HumanPlayer implements Player {
     public String username;
     //public int tour = 0;
 
+    /**
+     * Constructeur de la classe HumanPlayer
+     * @param username, le surnom du joueur
+     */
     public HumanPlayer(String username) {
         this.username = username;
     }
 
+    /**
+     * Méthode permettant d'obtenir le nom du joueur
+     * @return le surnom du joueur
+     */
     @Override
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Méthode demandant au joueur la Position choisit
+     * @param b, le Board, sur lequelle on joue
+     * @return la Position choisit par le joueur
+     * @throws InvalidCoordinatesException
+     */
     @Override
     public Position choice(Board b) throws InvalidCoordinatesException {
         Position p = writeCoordinates(b);
@@ -33,10 +47,16 @@ public class HumanPlayer implements Player {
         return p;
     }
 
-    public Position writeCoordinates(Board b) throws InvalidCoordinatesException {
+    /**
+     * Méthode permettant de vérifier que la Position choisit, soit libre, dans le plateau
+     * et soit adjancente à une autre.
+     * @param b, le Board sur lequelle on joue
+     * @return la Position
+     * @throws InvalidCoordinatesException
+     */
+     Position writeCoordinates(Board b) throws InvalidCoordinatesException {
         Position p;
         boolean continuer;
-        
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
@@ -54,7 +74,13 @@ public class HumanPlayer implements Player {
         return p;
     }
 
-    static Position readCoordinates(Board b) throws InvalidCoordinatesException {
+    /**
+     * Méthode permettant de lire le choix du joueur.
+     * @param b, Board sur lequelle on joue
+     * @return la Position choisit
+     * @throws InvalidCoordinatesException
+     */
+     Position readCoordinates(Board b) throws InvalidCoordinatesException {
         String coupSaisi;
         Position p;
         coupSaisi = in.nextLine();
@@ -66,6 +92,9 @@ public class HumanPlayer implements Player {
         return p;
     }
 
+    /**
+     * Méthode au joueur leur surnoms durant la partie.
+     */
     @Override
     public void initUsername() {
         boolean continuer;

@@ -18,21 +18,42 @@ public class Board {
     public int nb_lignes;
     Color[][] color;
 
-    Board(int nb_colonnes, int nb_lignes) {
+    /**
+     * Constructeur de la classe Board
+     *
+     * @param nb_colonnes, le nombre de colonnes chosit par le joueur
+     * @param nb_lignes, le nombre de ligne chosiit per le joueur
+     */
+    public Board(int nb_colonnes, int nb_lignes) {
         this.nb_colonnes = nb_colonnes;
         this.nb_lignes = nb_lignes;
         color = new Color[nb_colonnes][nb_lignes];
     }
 
+    /**
+     * Méthode permettant de connaître la couleur d'une position
+     *
+     * @param p, la Position
+     * @return la couleur
+     */
     Color get(Position p) {
         return p.color;
     }
 
+    /**
+     * Méthode permettant d'attribuer une couleur à une position
+     *
+     * @param p, la position
+     * @param c, la couleur
+     */
     void set(Position p, Color c) {
         p.color = c;
         color[p.col][p.row] = c;
     }
 
+    /**
+     * Méthode permettant de dessiner les lignes des côtés de notre Board
+     */
     void dessinerLigne() {
         System.out.print("   +");
         for (int i = 0; i <= nb_colonnes * 2; i++) {
@@ -41,6 +62,9 @@ public class Board {
         System.out.println("+");
     }
 
+    /**
+     * Méthode permettant de dessiner les lettres sur le haut du Board
+     */
     void dessinerLettreHaut() {
         char letter = 'A';
         System.out.print("     ");
@@ -51,7 +75,10 @@ public class Board {
         System.out.println("");
     }
 
-    void dessinerIntérieurBoard() {
+    /**
+     * Méthode permettant d'afficher les symboles en fonction de leur Couleurs
+     */
+    public void dessinerIntérieurBoard() {
 
         // création du board + remplissage vide
         String board[][] = new String[nb_colonnes][nb_lignes];
@@ -79,6 +106,10 @@ public class Board {
         }
     }
 
+    /**
+     * Méthode permettant d'initialiser la taille du Board, en demandant aux
+     * joueurs
+     */
     void initBoardSize() {
         Scanner in = new Scanner(System.in);
 
@@ -112,6 +143,9 @@ public class Board {
         }
     }
 
+    /**
+     * Méthode permettant d'initialiser toute les cases du Board à None
+     */
     void initBoard() {
         initBoardSize();
         color = new Color[nb_colonnes][nb_lignes];
@@ -120,29 +154,40 @@ public class Board {
         }
     }
 
-    void dessiner() {
+    /**
+     * Méthode permettant de dessiner notre Board au complet
+     */
+    public void dessiner() {
         dessinerLettreHaut();
         dessinerLigne();
         dessinerIntérieurBoard();
         dessinerLigne();
     }
 
-    /*
-    * @return true ssi une case est libre
+    /**
+     * Méthode permettant de vérifier que le joueur pose sur une case vide
+     * @param p, la position à vérifier
+     * @return true si la Position est Libre, false sinon
      */
     public boolean isFree(Position p) {
-        boolean isFree = true;
-        try {
-            isFree = Color.NONE == this.color[p.col][p.row];
-        } catch (ArrayIndexOutOfBoundsException exception) {
-        }
-        return isFree;
+        return  Color.NONE == this.color[p.col][p.row];
     }
 
+    /**
+     * Méthode permettant de vérifier que la position est bien dans le plateau.
+     * @param p, la position à vérifier.
+     * @return true si la Position est dans le plateau, faux sinon.
+     */
     public boolean estDansPlateau(Position p) {
         return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
     }
 
+    /**
+     * Méthode permettant de vérifier que la postion est bien adjacente à une Position.
+     * alliées.
+     * @param p, la position à vérifier
+     * @return true si la Position est adjacente à une autre, faux sinon.
+     */
     public boolean isAdj(Position p) {
         boolean isAdj = false;
         Position adj[] = Position.PositionAdj(p);
@@ -156,6 +201,10 @@ public class Board {
         return isAdj;
     }
 
+    /**
+     * Méthode permettant de savoir si le Board, est plein
+     * @return true si il n'y a plus de place, faux sinon
+     */
     public boolean isFull() {
         boolean full = true;
         for (int i = 0; i < nb_colonnes; i++) {
@@ -168,6 +217,10 @@ public class Board {
         return full;
     }
 
+    /**
+     * Méthode permettant de savoir si une Ligne est complète.
+     * @return true si elle est complete, faux sinon.
+     */
     public boolean rowComplete() {
         Color actualColor;
         boolean isRow = false;
@@ -192,6 +245,10 @@ public class Board {
         return isRow;
     }
 
+    /**
+     * Méthode permettant de savoir si la colonne est complete.
+     * @return true si elle complete, faux sinon.
+     */
     public boolean colComplete() {
         Color actualColor;
         boolean isCol = false;
@@ -216,6 +273,10 @@ public class Board {
         return isCol;
     }
 
+    /**
+     * Méthode permettant de savoir si une diagonale est complete
+     * @return true si elle est complete, faux sinon.
+     */
     public boolean diagComplete() {
         boolean isDiag = false;
         int count = 0;
@@ -261,6 +322,10 @@ public class Board {
         return isDiag;
     }
 
+    /**
+     * Méthode pour savoir si il y a un gagnant.
+     * @return true si une de ces trois conditions de victoires est vérifié
+     */
     public boolean isWin() {
         return rowComplete() || colComplete() || diagComplete();
     }
