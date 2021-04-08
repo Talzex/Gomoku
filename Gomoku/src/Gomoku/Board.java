@@ -336,7 +336,7 @@ public class Board {
         for(int i = 0; i < nb_lignes; i++){
             for(int u = 0; u < nb_colonnes; u++){
                 Position p = new Position(u,i);
-                if(color[u][i] == Color.NONE && Game.tour == 1){
+                if(color[u][i] == Color.NONE && Game.tour <= 1){
                     coupsJouables[n] = p;
                     n++;
                 } else if(b.isAdj(p) && isFree(p)){

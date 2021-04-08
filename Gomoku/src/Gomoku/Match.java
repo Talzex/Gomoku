@@ -74,6 +74,7 @@ public class Match {
                 System.out.println();
             } 
         } else {
+            System.out.println();
             System.out.println("> Aucun joueur n'a gagné, match nul.");
             System.out.println();
             

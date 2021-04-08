@@ -70,7 +70,15 @@ public class RobotPlayer implements Player {
      */
     @Override
     public void initUsername() {
-        username = "BobLeRobot";
+        String[] usernameList = new String[5];
+        usernameList[0] = "MaxLaMenace";
+        usernameList[1] = "BobLeRobot";
+        usernameList[2] = "R2D2";
+        usernameList[3] = "Terminator";
+        usernameList[4] = "C3PO";
+        Random r = new Random();
+        int n = r.nextInt(usernameList.length);
+        username = usernameList[n];
     }
      
 }
