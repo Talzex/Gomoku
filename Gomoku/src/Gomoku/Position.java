@@ -15,9 +15,9 @@ public class Position {
     Color color;
 
     /**
-     * Constructeur de la classe Position utilisant 2
-     * paramètres entiers.
-     * @param col colonne de notre plateau 
+     * Constructeur de la classe Position utilisant 2 paramètres entiers.
+     *
+     * @param col colonne de notre plateau
      * @param row ligne de notre plateau
      */
     public Position(int col, int row) {
@@ -28,8 +28,9 @@ public class Position {
     }
 
     /**
-     * Constructeur de la classse Position utilisant 1 paramètre
-     * , une chaîne  de caratères.
+     * Constructeur de la classse Position utilisant 1 paramètre , une chaîne de
+     * caratères.
+     *
      * @param coord Position choisit par le joueur sous la forme : "A3"
      * @throws InvalidCoordinatesException
      */
@@ -40,6 +41,7 @@ public class Position {
 
     /**
      * Méthode pour obtenir seulement la colonne.
+     *
      * @return la colonne du plateau
      */
     public int getCol() {
@@ -48,6 +50,7 @@ public class Position {
 
     /**
      * Méthode pour obtenier seulement la ligne.
+     *
      * @return la ligne du plateau
      */
     public int getRow() {
@@ -55,12 +58,12 @@ public class Position {
     }
 
     /**
-     * Méthode permettant de convertir la ligne de notre chaîne de caratères
-     * en vérifiant que les différentes conditions ont été respectées, sinon des exceptions
-     * se levent.
-     * 
+     * Méthode permettant de convertir la ligne de notre chaîne de caratères en
+     * vérifiant que les différentes conditions ont été respectées, sinon des
+     * exceptions se levent.
+     *
      * @param coord Position jouée par le joueur sous la forme : "A3"
-     * @return le numéro de la ligne 
+     * @return le numéro de la ligne
      * @throws InvalidCoordinatesException
      */
     public static int rowToInt(String coord) throws InvalidCoordinatesException {
@@ -87,8 +90,9 @@ public class Position {
 
     /**
      * Méthode permettant de convertir la colonne de notre chaîne de caratères
-     * en vérifiant que les différentes conditions ont été respectées, sinon des exceptions
-     * se levent.
+     * en vérifiant que les différentes conditions ont été respectées, sinon des
+     * exceptions se levent.
+     *
      * @param coord Position jouée par le joueur sous la forme : "A3"
      * @return le numéro de la colonne convertit.
      * @throws InvalidCoordinatesException
@@ -123,7 +127,7 @@ public class Position {
         diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
         return diagonales;
     }
-    
+
     public static Position[] PositionAdj(Position p) {
         Position[] adj = new Position[8];
         adj[0] = new Position(p.col + 1, p.row); // NORD
@@ -136,4 +140,22 @@ public class Position {
         adj[7] = new Position(p.col - 1, p.row - 1);
         return adj;
     }
+
+    public static String colonneToString(int col) {
+        int quot = col / 26;
+        int rem = col % 26;
+        char lettre = (char) ((int) 'A' + rem);
+        if (quot == 0) {
+            return "" + lettre;
+        } else {
+            return colonneToString(quot - 1) + lettre;
+        }
+    }
+   
+    public static String positionToString(Position p) {
+        String strCol = colonneToString(p.col);
+        int strRow = p.row + 1;
+        return strCol + strRow;
+    }
+    
 }

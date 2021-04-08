@@ -47,17 +47,13 @@ public class Match {
         System.out.println();
         do {
             Game.nextPlayer = Color.BLACK;
-            Position p = joueur1.choice(b);
-            b.set(p, Game.nextPlayer);
-            Game.coupsjoues.add(p);
+            Game.coupsjoues.add(joueur1.choice(b));
             b.dessiner();
             ended = b.isFull();
             win = b.isWin();
             if (!ended && !win) {
                 Game.nextPlayer = Color.WHITE;
-                Position p2 = joueur2.choice(b);
-                b.set(p2, Game.nextPlayer);
-                Game.coupsjoues.add(p);
+                Game.coupsjoues.add(joueur2.choice(b));
                 b.dessiner();
             }
             win = b.isWin();
@@ -79,6 +75,10 @@ public class Match {
             } 
         } else {
             System.out.println("> Aucun joueur n'a gagné, match nul.");
+            System.out.println();
+            
         }
+        Game.afficherCoupsJoues();
+        System.out.println();
     }
 }

@@ -329,4 +329,22 @@ public class Board {
     public boolean isWin() {
         return rowComplete() || colComplete() || diagComplete();
     }
+    
+    public Position[] coupsJouables(Board b){
+        Position[] coupsJouables = new Position[676];
+        int n = 0;
+        for(int i = 0; i < nb_lignes; i++){
+            for(int u = 0; u < nb_colonnes; u++){
+                Position p = new Position(u,i);
+                if(color[u][i] == Color.NONE && Game.tour == 1){
+                    coupsJouables[n] = p;
+                    n++;
+                } else if(b.isAdj(p) && isFree(p)){
+                    coupsJouables[n] = p;
+                    n++;
+                }
+            }
+        }
+        return Arrays.copyOf(coupsJouables, n);
+    }
 }

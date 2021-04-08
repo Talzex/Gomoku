@@ -15,7 +15,6 @@ public class HumanPlayer implements Player {
 
     static Scanner in = new Scanner(System.in);
     public String username;
-    //public int tour = 0;
 
     /**
      * Constructeur de la classe HumanPlayer
