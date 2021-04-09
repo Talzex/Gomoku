@@ -10,8 +10,6 @@ import Jeu.Game;
 import Exceptions.InvalidCoordinatesException;
 import Jeu.Position;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -42,7 +40,6 @@ public class RobotPlayer implements Player {
      * Méthode demandant au joueur la Position choisit
      * @param b, le Board, sur lequelle on joue
      * @return la Position choisit par le joueur
-     * @throws InvalidCoordinatesException
      */
     @Override
     public Position choice(Board b) {
