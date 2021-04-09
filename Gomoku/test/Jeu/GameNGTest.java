@@ -56,6 +56,7 @@ public class GameNGTest {
 
     /**
      * Test of isInBoard method, of class Game.
+     * @throws Exceptions.InvalidCoordinatesException
      */
     @Test
     public void testisInBoard() throws InvalidCoordinatesException {

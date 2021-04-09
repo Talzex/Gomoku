@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @author Julian
+ * @author jforme/tduthil
  */
 public class RobotPlayer implements Player {
     

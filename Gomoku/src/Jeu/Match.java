@@ -5,7 +5,6 @@
  */
 package Jeu;
 
-import Exceptions.InvalidCoordinatesException;
 import Exceptions.InvalidSizeException;
 import Players.Player;
 
@@ -37,9 +36,8 @@ public class Match {
 
     /**
      * Méthode permettant de lancer le jeu, de l'arrêter sous certaines conditions
-     * @throws InvalidCoordinatesException
      */
-    public void run() throws InvalidCoordinatesException  {
+    public void run()  {
         boolean ended = false;
         boolean win = false;
         Game.board .initBoard();

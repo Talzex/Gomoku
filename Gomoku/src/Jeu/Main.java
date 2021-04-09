@@ -5,25 +5,23 @@
  */
 package Jeu;
 
-import Exceptions.InvalidCoordinatesException;
 import Exceptions.InvalidSizeException;
 import Players.RobotPlayer;
 import Players.HumanPlayer;
 
 /**
  *
- * @author jforme
+ * @author jforme/tduthil
  */
 public class Main {
 
     /**
      * Lancement du jeu
      * @param args
-     * @throws InvalidCoordinatesException
      * @throws InvalidSizeException
      */
-    public static void main(String args[]) throws InvalidCoordinatesException, InvalidSizeException{
-        Match m = new Match(5,5, new RobotPlayer(""), new RobotPlayer(""));
+    public static void main(String args[]) throws InvalidSizeException{
+        Match m = new Match(5,5, new HumanPlayer(""), new RobotPlayer(""));
         m.run();
     }
 }

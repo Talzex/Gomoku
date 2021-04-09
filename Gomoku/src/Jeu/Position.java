@@ -111,7 +111,41 @@ public class Position {
             throw new InvalidCoordinatesException("Erreur : Caractère Invalide");
         }
     }
+    
+    /**
+     * Méthode convertissant un entier en un String
+     * @param col, la colonne
+     * @return la lettre correpond à la colonne
+     */
+    public static String colonneToString(int col) {
+        int quot = col / 26;
+        int rem = col % 26;
+        char lettre = (char) ((int) 'A' + rem);
+        if (quot == 0) {
+            return "" + lettre;
+        } else {
+            return colonneToString(quot - 1) + lettre;
+        }
+    }
 
+    /**
+     * Méthode convertissant une Position en String
+     * @param p, la Position
+     * @return un String de Position
+     */
+    public static String positionToString(Position p) {
+        String strCol = colonneToString(p.col);
+        int strRow = p.row + 1;
+        return strCol + strRow;
+    }
+
+    /**
+     * Méthode permettant de stocker les positions des diagonales autour de notre
+     * position 
+     * 
+     * @param p, la Position
+     * @return un tableau de Position
+     */
     public static Position[] diagonalesCroissantes(Position p) {
         Position[] diagonales = new Position[Game.nbToWin - 1];
         diagonales[0] = new Position(p.col + 1, p.row - 1); // NORD-EST 1
@@ -120,7 +154,13 @@ public class Position {
         diagonales[3] = new Position(p.col - 2, p.row + 2); // SUD-OUEST 2
         return diagonales;
     }
-
+    /**
+     * Méthode permettant de stocker les positions des diagonales autour de notre
+     * position 
+     * 
+     * @param p, la Position
+     * @return un tableau de Position
+     */
     public static Position[] diagonalesDecroissantes(Position p) {
         Position[] diagonales = new Position[Game.nbToWin - 1];
         diagonales[0] = new Position(p.col - 1, p.row - 1); // NORD-OUEST 1
@@ -129,7 +169,13 @@ public class Position {
         diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
         return diagonales;
     }
-
+    /**
+     * Méthode permettant de stocker les positions adjacentes autour de notre
+     * position 
+     * 
+     * @param p, la Position
+     * @return un tableau de Position
+     */
     public static Position[] PositionAdj(Position p) {
         Position[] adj = new Position[8];
         int pos = 0;
@@ -144,22 +190,4 @@ public class Position {
 
         return adj;
     }
-
-    public static String colonneToString(int col) {
-        int quot = col / 26;
-        int rem = col % 26;
-        char lettre = (char) ((int) 'A' + rem);
-        if (quot == 0) {
-            return "" + lettre;
-        } else {
-            return colonneToString(quot - 1) + lettre;
-        }
-    }
-
-    public static String positionToString(Position p) {
-        String strCol = colonneToString(p.col);
-        int strRow = p.row + 1;
-        return strCol + strRow;
-    }
-
 }
