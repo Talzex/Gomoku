@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -255,7 +255,7 @@ public class Board {
                 Position diagD[] = Position.diagonalesDecroissantes(p);
 
                 for (int f = 0; f < 4; f++) {
-                    if (Game.estDansPlateau(diagC[f])) {
+                    if (Game.isInBoard(diagC[f])) {
                         if (color[diagC[f].col][diagC[f].row] == color[u][i] && color[u][i] != Color.NONE) {
                             count++;
                         } else {
@@ -269,7 +269,7 @@ public class Board {
                 count = 0;
 
                 for (int f = 0; f < 4; f++) {
-                    if (Game.estDansPlateau(diagD[f])) {
+                    if (Game.isInBoard(diagD[f])) {
                         if (color[diagD[f].col][diagD[f].row] == color[u][i] && color[u][i] != Color.NONE) {
                             count++;
                         } else {
@@ -287,34 +287,5 @@ public class Board {
         return isDiag;
     }
 
-    /**
-     * Méthode pour savoir si il y a un gagnant.
-     * @return true si une de ces trois conditions de victoires est vérifié
-     */
-    public boolean isWin() {
-        return rowComplete() || colComplete() || diagComplete();
-    }
     
-    /**
-     * Méthode déterminant tous les coups jouables
-     * @param b, le Board
-     * @return un tableau de Position des coups jouables
-     */
-    public Position[] coupsJouables(Board b){
-        Position[] coupsJouables = new Position[676];
-        int n = 0;
-        for(int i = 0; i < nb_lignes; i++){
-            for(int u = 0; u < nb_colonnes; u++){
-                Position p = new Position(u,i);
-                if(color[u][i] == Color.NONE && Game.tour < 1){
-                    coupsJouables[n] = p;
-                    n++;
-                } else if(Game.isAdj(p) && Game.isFree(p)){
-                    coupsJouables[n] = p;
-                    n++;
-                }
-            }
-        }
-        return Arrays.copyOf(coupsJouables, n);
-    }
 }

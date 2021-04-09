@@ -11,8 +11,6 @@ import Exceptions.InvalidCoordinatesException;
 import Gomoku.Match;
 import Gomoku.Position;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
