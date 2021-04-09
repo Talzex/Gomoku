@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Exceptions;
+package Exceptions;
 
 /**
  *
@@ -16,7 +16,7 @@ public class InvalidCoordinatesException extends Exception{
      * @param s
      */
     public InvalidCoordinatesException(String s){
-        System.err.println(s);
+        System.out.println(s);
     }
     
 }

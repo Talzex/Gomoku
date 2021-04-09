@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -26,9 +27,9 @@ public class Game {
      */
     public static boolean play(Position p) {
         if (tour < 1) {
-            return estDansPlateau(p) && isFree(p);
+            return isInBoard(p) && isFree(p);
         } else {
-            return isFree(p) && estDansPlateau(p) && isAdj(p);
+            return isFree(p) && isInBoard(p) && isAdj(p);
         }
     }
 
@@ -39,7 +40,7 @@ public class Game {
      * @return true si la Position est Libre, false sinon
      */
     public static boolean isFree(Position p) {
-        if (estDansPlateau(p)) {
+        if (isInBoard(p)) {
             return Color.NONE == board.color[p.col][p.row];
         } else {
             return false;
@@ -52,7 +53,7 @@ public class Game {
      * @param p, la position à vérifier.
      * @return true si la Position est dans le plateau, faux sinon.
      */
-    public static boolean estDansPlateau(Position p) {
+    public static boolean isInBoard(Position p) {
         return p.col >= 0 && p.col < board.nb_colonnes && p.row >= 0 && p.row < board.nb_lignes;
     }
 
@@ -67,7 +68,7 @@ public class Game {
         boolean isAdj = false;
         Position adj[] = Position.PositionAdj(p);
         for (int f = 0; f < 8; f++) {
-            if (estDansPlateau(adj[f])) {
+            if (isInBoard(adj[f])) {
                 if (board.color[adj[f].col][adj[f].row] != Color.NONE) {
                     isAdj = true;
                 }
@@ -86,7 +87,34 @@ public class Game {
         }
     }
     
-    public static void quit() {
-        
+    /**
+     * Méthode pour savoir si il y a un gagnant.
+     * @return true si une de ces trois conditions de victoires est vérifié
+     */
+    public static boolean isWin() {
+        return board.rowComplete() || board.colComplete() || board.diagComplete();
+    }
+    
+        /**
+     * Méthode déterminant tous les coups jouables
+     * @param b, le Board
+     * @return un tableau de Position des coups jouables
+     */
+    public static Position[] coupsJouables(Board b){
+        Position[] coupsJouables = new Position[676];
+        int n = 0;
+        for(int i = 0; i < Game.board.nb_lignes; i++){
+            for(int u = 0; u < Game.board.nb_colonnes; u++){
+                Position p = new Position(u,i);
+                if(board.color[u][i] == Color.NONE && Game.tour < 1){
+                    coupsJouables[n] = p;
+                    n++;
+                } else if(Game.isAdj(p) && Game.isFree(p)){
+                    coupsJouables[n] = p;
+                    n++;
+                }
+            }
+        }
+        return Arrays.copyOf(coupsJouables, n);
     }
 }

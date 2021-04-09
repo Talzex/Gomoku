@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
-import Gomoku.Exceptions.InvalidCoordinatesException;
-import Gomoku.Exceptions.InvalidSizeException;
-import Gomoku.Players.RobotPlayer;
-import Gomoku.Players.HumanPlayer;
+import Exceptions.InvalidCoordinatesException;
+import Exceptions.InvalidSizeException;
+import Players.HumanPlayer;
+import Players.RobotPlayer;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Main {
      * @throws InvalidSizeException
      */
     public static void main(String args[]) throws InvalidCoordinatesException, InvalidSizeException{
-        Match m = new Match(5,5, new RobotPlayer(""), new RobotPlayer(""));
+        Match m = new Match(5,5, new HumanPlayer(""), new HumanPlayer(""));
         m.run();
     }
 }

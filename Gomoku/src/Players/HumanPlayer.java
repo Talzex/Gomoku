@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Players;
+package Players;
 
-import Gomoku.Game.Board;
-import Gomoku.Game.Game;
-import Gomoku.Exceptions.InvalidCoordinatesException;
-import Gomoku.Game.Match;
-import Gomoku.Game.Position;
+import Gomoku.Board;
+import Gomoku.Game;
+import Exceptions.InvalidCoordinatesException;
+import Gomoku.Match;
+import Gomoku.Position;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Constructeur de la classe HumanPlayer
+     *
      * @param username, le surnom du joueur
      */
     public HumanPlayer(String username) {
@@ -31,6 +34,7 @@ public class HumanPlayer implements Player {
 
     /**
      * Méthode permettant d'obtenir le nom du joueur
+     *
      * @return le surnom du joueur
      */
     @Override
@@ -40,52 +44,62 @@ public class HumanPlayer implements Player {
 
     /**
      * Méthode demandant au joueur la Position choisit
+     *
      * @param b, le Board, sur lequelle on joue
      * @return la Position choisit par le joueur
-     * @throws InvalidCoordinatesException
      */
     @Override
-    public Position choice(Board b) throws InvalidCoordinatesException {
-        Position p = writeCoordinates(b);
+    public Position choice(Board b) {
+        Position p = null;
+        p = writeCoordinates(b);
         b.set(p, Game.nextPlayer);
         return p;
     }
 
     /**
-     * Méthode permettant de vérifier que la Position choisit, soit libre, dans le plateau
-     * et soit adjancente à une autre.
+     * Méthode permettant de vérifier que la Position choisit, soit libre, dans
+     * le plateau et soit adjancente à une autre.
+     *
      * @param b, le Board sur lequelle on joue
      * @return la Position
-     * @throws InvalidCoordinatesException
      */
-     Position writeCoordinates(Board b) throws InvalidCoordinatesException {
-        Position p;
-        boolean continuer;
+    Position writeCoordinates(Board b) {
+        Position p = null;
+        boolean continuer = false;
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
-            p = readCoordinates(b);
-            continuer  = Game.play(p);
-            if (!Game.estDansPlateau(p)) {
-                System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes);
-                System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
+            try {
+                p = readCoordinates(b);
+                continuer = Game.play(p);
+                if (!Game.isInBoard(p)) {
+                    System.out.println("");
+                    System.out.println("Erreur : Max colonnes = " + Position.colonneToString(b.nb_colonnes - 1));
+                    System.out.println("Erreur : Max lignes = " + b.nb_lignes);
+                    System.out.println("");
+                }
+            } catch (InvalidCoordinatesException ex) {
+                System.out.println("");
             }
+
         } while (!continuer);
         return p;
     }
 
     /**
      * Méthode permettant de lire le choix du joueur.
+     *
      * @param b, Board sur lequelle on joue
      * @return la Position choisit
      * @throws InvalidCoordinatesException
      */
-     Position readCoordinates(Board b) throws InvalidCoordinatesException {
+    Position readCoordinates(Board b) throws InvalidCoordinatesException {
         String coupSaisi;
         Position p;
         coupSaisi = in.nextLine();
         if ("/quit".equals(coupSaisi)) {
             System.out.println("> La partie a été annulée.");
             System.exit(0);
+
         }
         p = new Position(coupSaisi);
         return p;
@@ -103,7 +117,7 @@ public class HumanPlayer implements Player {
             } else {
                 if (Match.joueur2.getUsername().equals(Match.joueur1.getUsername())) {
                     System.out.println();
-                    System.out.println("> Cet utilisateur existe déjà");
+                    System.out.println("Erreur : Cet utilisateur existe déjà");
                     System.out.println();
                 }
                 System.out.println("> Comment s'appelle le joueur 2 ?");

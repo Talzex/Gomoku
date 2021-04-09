@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Exceptions;
+package Exceptions;
 
 /**
  *
@@ -17,7 +17,7 @@ public class InvalidSizeException extends Exception {
      * @param largeur, la largeur du plateau
      */
     public InvalidSizeException(int hauteur, int largeur) {
-        System.err.println("La hauteur et la largeur du plateau doivent être compris entre 5 et 26 inclus. Hauteur: " + hauteur + " Largeur: " + largeur);
+        System.out.println("La hauteur et la largeur du plateau doivent être compris entre 5 et 26 inclus. Hauteur: " + hauteur + " Largeur: " + largeur);
     }
     
 }

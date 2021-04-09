@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Players;
+package Players;
 
-import Gomoku.Game.Board;
-import Gomoku.Game.Game;
-import Gomoku.Exceptions.InvalidCoordinatesException;
-import Gomoku.Game.Position;
+import Gomoku.Board;
+import Gomoku.Game;
+import Exceptions.InvalidCoordinatesException;
+import Gomoku.Position;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,9 +45,16 @@ public class RobotPlayer implements Player {
      * @throws InvalidCoordinatesException
      */
     @Override
-    public Position choice(Board b) throws InvalidCoordinatesException {
-        Position p = writeCoordinates(b);
-        b.set(p, Game.nextPlayer);
+    public Position choice(Board b) {
+        Position p = null;
+        try {
+            p = writeCoordinates(b);
+            b.set(p, Game.nextPlayer);
+            
+        } catch (InvalidCoordinatesException ex) {
+            System.out.println("");
+        }
+        
         return p;
     }
     
@@ -58,7 +67,7 @@ public class RobotPlayer implements Player {
      */
      Position writeCoordinates(Board b) throws InvalidCoordinatesException {
         Position p;
-        Position[] coupsJouables = b.coupsJouables(b);
+        Position[] coupsJouables = Game.coupsJouables(b);
         Random r = new Random();
         int n = r.nextInt(coupsJouables.length);
         p = coupsJouables[n];

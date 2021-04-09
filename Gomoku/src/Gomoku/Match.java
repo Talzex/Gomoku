@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
-import Gomoku.Exceptions.InvalidCoordinatesException;
-import Gomoku.Exceptions.InvalidSizeException;
-import Gomoku.Players.Player;
+import Exceptions.InvalidCoordinatesException;
+import Exceptions.InvalidSizeException;
+import Players.Player;
 
 /**
  *
@@ -37,9 +37,8 @@ public class Match {
 
     /**
      * Méthode permettant de lancer le jeu, de l'arrêter sous certaines conditions
-     * @throws InvalidCoordinatesException
      */
-    public void run() throws InvalidCoordinatesException  {
+    public void run()  {
         boolean ended = false;
         boolean win = false;
         Game.board .initBoard();
@@ -60,7 +59,7 @@ public class Match {
             Game.coupsjoues.add(j.choice(Game.board));
             Game.board .dessiner();
             Game.tour++;
-            win = Game.board .isWin();
+            win = Game.isWin();
             ended = Game.board .isFull();
         } while (!win && !ended);
 

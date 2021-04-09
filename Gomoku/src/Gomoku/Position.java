@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
-import Gomoku.Exceptions.InvalidCoordinatesException;
+import Exceptions.InvalidCoordinatesException;
 
 /**
  *
@@ -78,7 +78,8 @@ public class Position {
                     s = s.concat(String.valueOf(coord.charAt(2)));
                 }
                 if (Integer.parseInt(s) > 26 || Integer.parseInt(s) <= 0) {
-                    throw new InvalidCoordinatesException("Erreur : Position entre 1 et 26");
+                    Position p = new Position(Game.board.nb_colonnes - 1, Game.board.nb_lignes - 1);
+                    throw new InvalidCoordinatesException("Erreur : Position entre A1 et " +  Position.positionToString(p));
                 }
                 return Integer.parseInt(s) - 1;
 
@@ -129,6 +130,7 @@ public class Position {
         diagonales[3] = new Position(p.col + 2, p.row + 2); // SUD-EST 2
         return diagonales;
     }
+    
 
     public static Position[] PositionAdj(Position p) {
         Position[] adj = new Position[8];

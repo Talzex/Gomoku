@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Game;
+package Gomoku;
 
-import Gomoku.Game.Position;
-import Gomoku.Exceptions.InvalidCoordinatesException;
+import Gomoku.Position;
+import Exceptions.InvalidCoordinatesException;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,7 @@ public class PositionNGTest {
 
     /**
      * Test of getCol method, of class Position.
-     * @throws Gomoku.InvalidCoordinatesException
+     * @throws Exceptions.InvalidCoordinatesException
      */
     @Test
     public void testGetCol() throws InvalidCoordinatesException {
@@ -37,7 +37,7 @@ public class PositionNGTest {
 
     /**
      * Test of getLig method, of class Position.
-     * @throws Gomoku.InvalidCoordinatesException
+     * @throws Exceptions.InvalidCoordinatesException
      */
     @Test
     public void testGetLig() throws InvalidCoordinatesException {

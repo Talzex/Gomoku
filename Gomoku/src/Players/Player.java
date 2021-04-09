@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku.Players;
+package Players;
 
-import Gomoku.Game.Board;
-import Gomoku.Exceptions.InvalidCoordinatesException;
-import Gomoku.Game.Position;
+import Gomoku.Board;
+import Gomoku.Position;
 
 /**
  *
  * @author tduthil/jforme
  */
 public interface Player  {
-    Position choice(Board b) throws InvalidCoordinatesException;
+    Position choice(Board b);
     public String getUsername();
     public void initUsername();
 }
