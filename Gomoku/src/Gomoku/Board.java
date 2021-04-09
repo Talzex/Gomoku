@@ -164,42 +164,7 @@ public class Board {
         dessinerLigne();
     }
 
-    /**
-     * Méthode permettant de vérifier que le joueur pose sur une case vide
-     * @param p, la position à vérifier
-     * @return true si la Position est Libre, false sinon
-     */
-    public boolean isFree(Position p) {
-        return  Color.NONE == this.color[p.col][p.row];
-    }
-
-    /**
-     * Méthode permettant de vérifier que la position est bien dans le plateau.
-     * @param p, la position à vérifier.
-     * @return true si la Position est dans le plateau, faux sinon.
-     */
-    public boolean estDansPlateau(Position p) {
-        return p.col >= 0 && p.col < nb_colonnes && p.row >= 0 && p.row < nb_lignes;
-    }
-
-    /**
-     * Méthode permettant de vérifier que la postion est bien adjacente à une Position.
-     * alliées.
-     * @param p, la position à vérifier
-     * @return true si la Position est adjacente à une autre, faux sinon.
-     */
-    public boolean isAdj(Position p) {
-        boolean isAdj = false;
-        Position adj[] = Position.PositionAdj(p);
-        for (int f = 0; f < 8; f++) {
-            if (estDansPlateau(adj[f])) {
-                if (color[adj[f].col][adj[f].row] == Game.nextPlayer) {
-                    isAdj = true;
-                }
-            }
-        }
-        return isAdj;
-    }
+    
 
     /**
      * Méthode permettant de savoir si le Board, est plein
@@ -290,7 +255,7 @@ public class Board {
                 Position diagD[] = Position.diagonalesDecroissantes(p);
 
                 for (int f = 0; f < 4; f++) {
-                    if (estDansPlateau(diagC[f])) {
+                    if (Game.estDansPlateau(diagC[f])) {
                         if (color[diagC[f].col][diagC[f].row] == color[u][i] && color[u][i] != Color.NONE) {
                             count++;
                         } else {
@@ -304,7 +269,7 @@ public class Board {
                 count = 0;
 
                 for (int f = 0; f < 4; f++) {
-                    if (estDansPlateau(diagD[f])) {
+                    if (Game.estDansPlateau(diagD[f])) {
                         if (color[diagD[f].col][diagD[f].row] == color[u][i] && color[u][i] != Color.NONE) {
                             count++;
                         } else {
@@ -330,16 +295,21 @@ public class Board {
         return rowComplete() || colComplete() || diagComplete();
     }
     
+    /**
+     * Méthode déterminant tous les coups jouables
+     * @param b, le Board
+     * @return un tableau de Position des coups jouables
+     */
     public Position[] coupsJouables(Board b){
         Position[] coupsJouables = new Position[676];
         int n = 0;
         for(int i = 0; i < nb_lignes; i++){
             for(int u = 0; u < nb_colonnes; u++){
                 Position p = new Position(u,i);
-                if(color[u][i] == Color.NONE && Game.tour <= 1){
+                if(color[u][i] == Color.NONE && Game.tour < 1){
                     coupsJouables[n] = p;
                     n++;
-                } else if(b.isAdj(p) && isFree(p)){
+                } else if(Game.isAdj(p) && Game.isFree(p)){
                     coupsJouables[n] = p;
                     n++;
                 }

@@ -58,7 +58,6 @@ public class RobotPlayer implements Player {
         Random r = new Random();
         int n = r.nextInt(coupsJouables.length);
         p = coupsJouables[n];
-        Game.tour++;
         System.out.println();
         System.out.println("> " + this.username + " joue le coup : " + Position.positionToString(p));
         System.out.println();

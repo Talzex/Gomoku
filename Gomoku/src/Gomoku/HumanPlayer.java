@@ -59,13 +59,8 @@ public class HumanPlayer implements Player {
         do {
             System.out.println("> Quel coup voulez-vous jouer " + this.username + " ?");
             p = readCoordinates(b);
-            if (Game.tour < 2) {
-                continuer = b.isFree(p) && b.estDansPlateau(p);
-            } else {
-                continuer = b.isFree(p) && b.estDansPlateau(p) && b.isAdj(p);
-            }
-            Game.tour++;
-            if (!b.estDansPlateau(p)) {
+            continuer  = Game.play(p);
+            if (!Game.estDansPlateau(p)) {
                 System.err.println("Erreur : Coordonnées max lignes = " + b.nb_lignes);
                 System.err.println("Erreur : Coordonnées max colonnes = " + b.nb_colonnes);
             }
@@ -92,7 +87,7 @@ public class HumanPlayer implements Player {
     }
 
     /**
-     * Méthode au joueur leur surnoms durant la partie.
+     * Méthode permettant au joueur de choisir un surnom.
      */
     @Override
     public void initUsername() {
@@ -112,6 +107,7 @@ public class HumanPlayer implements Player {
             if ("/quit".equals(username)) {
                 System.out.println("> La partie a été annulée.");
                 System.exit(0);
+
             }
             continuer = username.length() == 0 || username.trim().equals("") || Match.joueur2.getUsername().equals(Match.joueur1.getUsername());
         } while (continuer);

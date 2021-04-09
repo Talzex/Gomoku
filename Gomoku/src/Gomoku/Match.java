@@ -10,7 +10,6 @@ package Gomoku;
  * @author tduthil/jforme
  */
 public class Match {
-    Board b;
     static Player joueur1;
     static Player joueur2;
 
@@ -24,7 +23,7 @@ public class Match {
      */
      Match(int largeur, int hauteur, Player j1, Player j2) throws InvalidSizeException {
         if (hauteur >= 5 && hauteur <= 26 && largeur >= 5 && largeur <= 26) {
-            b = new Board(largeur, hauteur);
+            Game.board = new Board(largeur, hauteur);
         } else {
             throw new InvalidSizeException(hauteur, largeur);
         }
@@ -39,7 +38,7 @@ public class Match {
     public void run() throws InvalidCoordinatesException  {
         boolean ended = false;
         boolean win = false;
-        b.initBoard();
+        Game.board .initBoard();
         joueur1.initUsername();
         joueur2.initUsername();
         System.out.println();
@@ -47,17 +46,20 @@ public class Match {
         System.out.println();
         do {
             Game.nextPlayer = Color.BLACK;
-            Game.coupsjoues.add(joueur1.choice(b));
-            b.dessiner();
-            ended = b.isFull();
-            win = b.isWin();
+            Game.coupsjoues.add(joueur1.choice(Game.board));
+            Game.board .dessiner();
+            Game.tour++;
+            ended = Game.board .isFull();
+            win = Game.board .isWin();
             if (!ended && !win) {
                 Game.nextPlayer = Color.WHITE;
-                Game.coupsjoues.add(joueur2.choice(b));
-                b.dessiner();
+                Game.coupsjoues.add(joueur2.choice(Game.board ));
+                Game.board .dessiner();
+                Game.tour++;
             }
-            win = b.isWin();
-            ended = b.isFull();
+            System.out.println(Game.tour);
+            win = Game.board .isWin();
+            ended = Game.board .isFull();
         } while (!win && !ended);
 
         if (win) {

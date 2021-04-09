@@ -12,8 +12,7 @@ package Gomoku;
 public class InvalidCoordinatesException extends Exception{
 
     /**
-     * Soulève une exception si une case est déjà occupé ou que la coordonnées
-     * n'existe pas.
+     * Soulève une exception si une case est déjà occupé
      * @param s
      */
     public InvalidCoordinatesException(String s){
