@@ -199,6 +199,7 @@ public class Board {
                     actualColor = color[u][i];
                     count++;
                 } else {
+                    actualColor = null;
                     count = 0;
                 }
 
@@ -227,6 +228,7 @@ public class Board {
                     actualColor = color[u][i];
                     count++;
                 } else {
+                    actualColor = null;
                     count = 0;
                 }
                 if (count >= Game.nbToWin) {

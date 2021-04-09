@@ -45,6 +45,7 @@ public class Match {
         Game.board .initBoard();
         joueur1.initUsername();
         joueur2.initUsername();
+        Game.board.dessiner();
         System.out.println();
         System.out.println("> Pour jouer il faut écrire une position de la forme 'A5', 'B12'.");
         System.out.println();
