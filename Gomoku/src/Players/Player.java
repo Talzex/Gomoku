@@ -5,8 +5,8 @@
  */
 package Players;
 
-import Gomoku.Board;
-import Gomoku.Position;
+import Jeu.Board;
+import Jeu.Position;
 
 /**
  *

@@ -5,10 +5,10 @@
  */
 package Players;
 
-import Gomoku.Board;
-import Gomoku.Game;
+import Jeu.Board;
+import Jeu.Game;
 import Exceptions.InvalidCoordinatesException;
-import Gomoku.Position;
+import Jeu.Position;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;

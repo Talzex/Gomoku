@@ -5,11 +5,11 @@
  */
 package Players;
 
-import Gomoku.Board;
-import Gomoku.Game;
+import Jeu.Board;
+import Jeu.Game;
 import Exceptions.InvalidCoordinatesException;
-import Gomoku.Match;
-import Gomoku.Position;
+import Jeu.Match;
+import Jeu.Position;
 import java.util.Scanner;
 
 /**
