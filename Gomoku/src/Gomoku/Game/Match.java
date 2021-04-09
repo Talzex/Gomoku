@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku;
+package Gomoku.Game;
+
+import Gomoku.Exceptions.InvalidCoordinatesException;
+import Gomoku.Exceptions.InvalidSizeException;
+import Gomoku.Players.Player;
 
 /**
  *
  * @author tduthil/jforme
  */
 public class Match {
-    static Player joueur1;
-    static Player joueur2;
+    public static Player joueur1;
+    public static Player joueur2;
 
     /**
      * Constructeur de la classe Match
@@ -45,19 +49,17 @@ public class Match {
         System.out.println("> Pour jouer il faut écrire une position de la forme 'A5', 'B12'.");
         System.out.println();
         do {
-            Game.nextPlayer = Color.BLACK;
-            Game.coupsjoues.add(joueur1.choice(Game.board));
+            Player j;
+            if(Game.tour%2 == 0){
+                Game.nextPlayer = Color.BLACK;
+                j = joueur1;
+            } else {
+                Game.nextPlayer = Color.WHITE;
+                j = joueur2;
+            }
+            Game.coupsjoues.add(j.choice(Game.board));
             Game.board .dessiner();
             Game.tour++;
-            ended = Game.board .isFull();
-            win = Game.board .isWin();
-            if (!ended && !win) {
-                Game.nextPlayer = Color.WHITE;
-                Game.coupsjoues.add(joueur2.choice(Game.board ));
-                Game.board .dessiner();
-                Game.tour++;
-            }
-            System.out.println(Game.tour);
             win = Game.board .isWin();
             ended = Game.board .isFull();
         } while (!win && !ended);

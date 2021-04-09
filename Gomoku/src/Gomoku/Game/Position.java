@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku;
+package Gomoku.Game;
+
+import Gomoku.Exceptions.InvalidCoordinatesException;
 
 /**
  *
@@ -130,14 +132,16 @@ public class Position {
 
     public static Position[] PositionAdj(Position p) {
         Position[] adj = new Position[8];
-        adj[0] = new Position(p.col + 1, p.row); // NORD
-        adj[1] = new Position(p.col - 1, p.row); // SUD
-        adj[2] = new Position(p.col, p.row + 1);
-        adj[3] = new Position(p.col, p.row - 1);
-        adj[4] = new Position(p.col + 1, p.row + 1);
-        adj[5] = new Position(p.col - 1, p.row + 1);
-        adj[6] = new Position(p.col + 1, p.row - 1);
-        adj[7] = new Position(p.col - 1, p.row - 1);
+        int pos = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int u = -1; u <= 1; u++) {
+                if (u != 0 || i != 0) {
+                    adj[pos] = new Position(p.col + u, p.row + i);
+                    pos++;
+                }
+            }
+        }
+
         return adj;
     }
 
@@ -151,11 +155,11 @@ public class Position {
             return colonneToString(quot - 1) + lettre;
         }
     }
-   
+
     public static String positionToString(Position p) {
         String strCol = colonneToString(p.col);
         int strRow = p.row + 1;
         return strCol + strRow;
     }
-    
+
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gomoku;
+package Gomoku.Game;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -46,7 +46,7 @@ public class Board {
      * @param p, la position
      * @param c, la couleur
      */
-    void set(Position p, Color c) {
+    public void set(Position p, Color c) {
         p.color = c;
         color[p.col][p.row] = c;
     }
