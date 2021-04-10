@@ -12,23 +12,9 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author tduthil
+ * @author jforme/tduthil
  */
 public class GameNGTest {
-
-    /**
-     * Test of play method, of class Game.
-     */
-    @Test
-    public void testPlay() {
-        System.out.println("play");
-        Position p = null;
-        boolean expResult = false;
-        boolean result = Game.play(p);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of isFree method, of class Game.

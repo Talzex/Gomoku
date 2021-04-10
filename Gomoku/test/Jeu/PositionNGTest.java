@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author tduthil
+ * @author jforme/tduthil
  */
 public class PositionNGTest {
 

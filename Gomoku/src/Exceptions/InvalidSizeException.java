@@ -7,7 +7,7 @@ package Exceptions;
 
 /**
  *
- * @author jforme
+ * @author jforme/tduthil
  */
 public class InvalidSizeException extends Exception {
 

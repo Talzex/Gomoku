@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author tduthil
+ * @author jforme/tduthil
  */
 public class BoardNGTest {
     Board b = new Board(10,20);

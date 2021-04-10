@@ -6,7 +6,7 @@
 package Jeu;
 
 /**
- *
+ * Énumération de couleurs
  * @author tduthil/jforme
  */
 public enum Color{BLACK, WHITE, NONE};

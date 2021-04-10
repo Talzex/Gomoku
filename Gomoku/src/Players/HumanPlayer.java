@@ -95,7 +95,7 @@ public class HumanPlayer implements Player {
         Position p;
         coupSaisi = in.nextLine();
         if ("/quit".equals(coupSaisi)) {
-            System.out.println("> La partie a été annulée.");
+            System.out.println("> " + username + " a quitté la partie.");
             System.exit(0);
 
         }
@@ -122,7 +122,7 @@ public class HumanPlayer implements Player {
             }
             username = in.nextLine();
             if ("/quit".equals(username)) {
-                System.out.println("> La partie a été annulée.");
+                System.out.println("> " + username + " a quitté la partie.");
                 System.exit(0);
 
             }

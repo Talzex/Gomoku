@@ -7,7 +7,7 @@ package Exceptions;
 
 /**
  *
- * @author Julian Forme
+ * @author jforme/tduthil
  */
 public class InvalidCoordinatesException extends Exception{
 

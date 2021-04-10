@@ -21,7 +21,7 @@ public class Main {
      * @throws InvalidSizeException
      */
     public static void main(String args[]) throws InvalidSizeException{
-        Match m = new Match(5,5, new RobotPlayer(""), new RobotPlayer(""));
+        Match m = new Match(5,5, new HumanPlayer(""), new RobotPlayer(""));
         m.run();
     }
 }
