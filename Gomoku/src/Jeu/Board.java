@@ -199,8 +199,13 @@ public class Board {
                     actualColor = color[u][i];
                     count++;
                 } else {
-                    actualColor = null;
-                    count = 0;
+                    if(color[u][i] == Color.NONE){
+                        actualColor = null;
+                        count = 0;
+                    } else {
+                        count = 1;
+                        actualColor = color[u][i];
+                    }
                 }
 
                 if (count >= Game.nbToWin) {
@@ -228,8 +233,13 @@ public class Board {
                     actualColor = color[u][i];
                     count++;
                 } else {
-                    actualColor = null;
-                    count = 0;
+                    if(color[u][i] == Color.NONE){
+                        actualColor = null;
+                        count = 0;
+                    } else {
+                        count = 1;
+                        actualColor = color[u][i];
+                    }
                 }
                 if (count >= Game.nbToWin) {
                     isCol = true;

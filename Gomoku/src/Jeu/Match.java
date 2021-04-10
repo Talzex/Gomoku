@@ -47,8 +47,8 @@ public class Match {
         System.out.println();
         System.out.println("> Pour jouer il faut écrire une position de la forme 'A5', 'B12'.");
         System.out.println();
+        Player j;
         do {
-            Player j;
             if(Game.tour%2 == 0){
                 Game.nextPlayer = Color.BLACK;
                 j = joueur1;
