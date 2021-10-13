@@ -1,5 +1,4 @@
 # Projet-Gomuku
 
-Projet Gomoku
-
-Thomas Duthil, Julian Forme
+Projet Gomoku réalisé au S2 du DUT Informatique en binôme :
+Julian Forme et Thomas Duthil
